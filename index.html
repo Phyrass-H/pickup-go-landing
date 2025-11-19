@@ -276,130 +276,255 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #2a5a94 0%, #1a3d6b 50%, #0d1f3d 100%);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f1419 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease infinite;
             position: relative;
             overflow: hidden;
             padding: 40px 20px;
         }
 
-        /* Animated diagonal streaks */
-        .streak {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.1);
-            transform: rotate(-45deg);
-            animation: moveStreak linear infinite;
+        @keyframes gradientShift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
         }
 
-        .streak1 {
-            width: 200px;
-            height: 2px;
-            top: 20%;
-            right: -200px;
+        /* Large watermark logo */
+        .logo-watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            max-width: 800px;
+            opacity: 0.05;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .logo-watermark img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Organic flowing curves */
+        .curve-1 {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            border-radius: 40% 60% 70% 30%;
+            background: linear-gradient(135deg, rgba(59, 111, 181, 0.2) 0%, rgba(91, 143, 217, 0.15) 100%);
+            bottom: -300px;
+            left: -200px;
+            animation: float 12s ease-in-out infinite;
+            filter: blur(60px);
+        }
+
+        .curve-2 {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 70% 30% 50% 50%;
+            background: linear-gradient(135deg, rgba(59, 111, 181, 0.25) 0%, rgba(42, 90, 148, 0.2) 100%);
+            top: -200px;
+            right: -150px;
+            animation: float 10s ease-in-out infinite reverse;
+            filter: blur(50px);
+        }
+
+        .curve-3 {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 60% 40% 30% 70%;
+            background: linear-gradient(135deg, rgba(91, 143, 217, 0.15) 0%, rgba(59, 111, 181, 0.15) 100%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: float 14s ease-in-out infinite;
+            filter: blur(70px);
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+            33% {
+                transform: translateY(-40px) rotate(3deg) scale(1.05);
+            }
+            66% {
+                transform: translateY(20px) rotate(-3deg) scale(0.95);
+            }
+        }
+
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(59, 111, 181, 0.6) 0%, rgba(59, 111, 181, 0) 70%);
+            animation: particleFloat linear infinite;
+        }
+
+        .particle-1 {
+            width: 80px;
+            height: 80px;
+            top: 15%;
+            left: 10%;
             animation-duration: 8s;
             animation-delay: 0s;
         }
 
-        .streak2 {
-            width: 150px;
-            height: 2px;
-            top: 40%;
-            right: -150px;
+        .particle-2 {
+            width: 60px;
+            height: 60px;
+            top: 60%;
+            right: 15%;
             animation-duration: 10s;
             animation-delay: 2s;
         }
 
-        .streak3 {
-            width: 180px;
-            height: 2px;
-            top: 60%;
-            right: -180px;
+        .particle-3 {
+            width: 40px;
+            height: 40px;
+            bottom: 20%;
+            left: 20%;
             animation-duration: 12s;
             animation-delay: 4s;
+            background: radial-gradient(circle, rgba(91, 143, 217, 0.6) 0%, rgba(91, 143, 217, 0) 70%);
         }
 
-        .streak4 {
-            width: 120px;
-            height: 2px;
-            top: 80%;
-            right: -120px;
+        .particle-4 {
+            width: 50px;
+            height: 50px;
+            top: 30%;
+            right: 25%;
             animation-duration: 9s;
             animation-delay: 1s;
         }
 
-        .streak5 {
-            width: 160px;
-            height: 2px;
-            top: 30%;
-            right: -160px;
+        .particle-5 {
+            width: 70px;
+            height: 70px;
+            bottom: 30%;
+            right: 10%;
             animation-duration: 11s;
             animation-delay: 3s;
+            background: radial-gradient(circle, rgba(42, 90, 148, 0.5) 0%, rgba(42, 90, 148, 0) 70%);
         }
 
-        .streak6 {
-            width: 140px;
-            height: 2px;
+        .particle-6 {
+            width: 55px;
+            height: 55px;
+            top: 45%;
+            left: 15%;
+            animation-duration: 7s;
+            animation-delay: 1.5s;
+        }
+
+        .particle-7 {
+            width: 65px;
+            height: 65px;
+            bottom: 15%;
+            right: 30%;
+            animation-duration: 9.5s;
+            animation-delay: 2.5s;
+            background: radial-gradient(circle, rgba(91, 143, 217, 0.6) 0%, rgba(91, 143, 217, 0) 70%);
+        }
+
+        .particle-8 {
+            width: 45px;
+            height: 45px;
+            top: 25%;
+            left: 40%;
+            animation-duration: 10.5s;
+            animation-delay: 0.5s;
+        }
+
+        .particle-9 {
+            width: 75px;
+            height: 75px;
             top: 70%;
-            right: -140px;
+            left: 5%;
             animation-duration: 13s;
-            animation-delay: 5s;
+            animation-delay: 3.5s;
+            background: radial-gradient(circle, rgba(59, 111, 181, 0.5) 0%, rgba(59, 111, 181, 0) 70%);
         }
 
-        @keyframes moveStreak {
-            0% {
-                right: -200px;
-                opacity: 0;
+        .particle-10 {
+            width: 50px;
+            height: 50px;
+            bottom: 40%;
+            right: 5%;
+            animation-duration: 8.5s;
+            animation-delay: 2s;
+        }
+
+        @keyframes particleFloat {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0.3;
             }
-            10% {
-                opacity: 1;
+            25% {
+                opacity: 0.7;
+                transform: translateY(-30px) translateX(15px);
             }
-            90% {
-                opacity: 1;
+            50% {
+                transform: translateY(-50px) translateX(-10px);
+                opacity: 0.9;
             }
-            100% {
-                right: 100%;
-                opacity: 0;
+            75% {
+                opacity: 0.5;
+                transform: translateY(-25px) translateX(20px);
             }
         }
 
-        /* Countdown card */
-        .countdown-card {
-            background: rgba(91, 143, 217, 0.4);
-            backdrop-filter: blur(20px);
-            border-radius: 30px;
-            padding: 50px 100px;
-            max-width: 1000px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        /* Content container */
+        .countdown-content {
             position: relative;
-            z-index: 1;
+            z-index: 10;
+            text-align: center;
+            max-width: 900px;
+            width: 100%;
         }
 
-        .countdown-card h1 {
+        .countdown-content h1 {
             color: white;
-            font-size: 48px;
+            font-size: 56px;
             font-weight: 700;
             margin-bottom: 20px;
             letter-spacing: -1px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
-        .countdown-card .subtitle {
-            color: rgba(255, 255, 255, 0.8);
+        .countdown-content .subtitle {
+            color: rgba(255, 255, 255, 0.85);
             font-size: 18px;
             line-height: 1.6;
-            margin-bottom: 50px;
-            max-width: 600px;
+            margin-bottom: 40px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        .launch-date-display {
+            color: rgba(91, 143, 217, 1);
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 50px;
+            text-shadow: 0 0 20px rgba(59, 111, 181, 0.5);
         }
 
         /* Countdown timer */
         .countdown-timer {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin-bottom: 50px;
+            gap: 40px;
+            margin-bottom: 60px;
         }
 
         .time-unit {
@@ -408,58 +533,99 @@
             align-items: center;
         }
 
+        .time-box {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 25px 30px;
+            min-width: 120px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .time-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(59, 111, 181, 0.8), transparent);
+        }
+
         .time-number {
-            font-size: 72px;
+            font-size: 64px;
             font-weight: 700;
             color: white;
             line-height: 1;
-            margin-bottom: 10px;
-            text-shadow: 0 4px 20px rgba(59, 111, 181, 0.5);
-            min-width: 100px;
+            margin-bottom: 12px;
+            text-shadow: 0 4px 20px rgba(59, 111, 181, 0.3);
+            font-variant-numeric: tabular-nums;
+            min-width: 90px;
+            display: inline-block;
         }
 
         .time-label {
-            font-size: 16px;
+            font-size: 14px;
             color: rgba(255, 255, 255, 0.6);
             text-transform: lowercase;
             font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .separator {
+            display: flex;
+            align-items: center;
+            color: rgba(59, 111, 181, 0.6);
+            font-size: 48px;
+            font-weight: 300;
+            align-self: center;
+            margin-top: -40px;
         }
 
         /* CTA Button */
-        .countdown-card .cta-button {
+        .cta-button {
             display: inline-block;
-            background: white;
-            color: #3B6FB5;
-            padding: 18px 50px;
+            background: linear-gradient(135deg, #3B6FB5 0%, #70a7e8 100%);
+            color: white;
+            padding: 20px 60px;
             border-radius: 50px;
             text-decoration: none;
             font-size: 18px;
             font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            animation: pulse 2s infinite;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 40px rgba(59, 111, 181, 0.5);
+            position: relative;
+            overflow: hidden;
         }
 
-        .countdown-card .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-            background: #f8f9fa;
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
         }
 
-        @keyframes pulse {
-            0%, 100% {
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            }
-            50% {
-                box-shadow: 0 10px 40px rgba(255, 255, 255, 0.3);
-            }
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(59, 111, 181, 0.7);
         }
 
         /* Launch date */
         .launch-date {
-            margin-top: 40px;
+            margin-top: 50px;
             color: rgba(255, 255, 255, 0.5);
-            font-size: 14px;
+            font-size: 15px;
         }
 
         footer {
@@ -986,49 +1152,48 @@
 
         /* Countdown Responsive */
         @media (max-width: 768px) {
-            .countdown-card {
-                padding: 40px 30px;
+            .countdown-content h1 {
+                font-size: 36px;
             }
 
-            .countdown-card h1 {
-                font-size: 32px;
-            }
-
-            .countdown-card .subtitle {
+            .countdown-content .subtitle {
                 font-size: 16px;
             }
 
+            .launch-date-display {
+                font-size: 22px;
+            }
+
             .countdown-timer {
-                gap: 15px;
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+
+            .time-box {
+                min-width: 90px;
+                padding: 20px 25px;
             }
 
             .time-number {
                 font-size: 48px;
-                min-width: 70px;
             }
 
-            .time-label {
-                font-size: 14px;
+            .separator {
+                display: none;
             }
 
-            .countdown-card .cta-button {
-                padding: 15px 40px;
+            .cta-button {
+                padding: 16px 45px;
                 font-size: 16px;
             }
-        }
 
-        @media (max-width: 480px) {
-            .countdown-timer {
-                gap: 10px;
+            .curve-1, .curve-2, .curve-3 {
+                opacity: 0.5;
             }
 
-            .time-number {
-                font-size: 36px;
-                min-width: 50px;
-            }
-
-            .time-label {
-                font-size: 12px;
+            .logo-watermark {
+                width: 80%;
+                max-width: 500px;
             }
         }
     </style>
@@ -1235,37 +1400,62 @@
     </section>
 
     <section class="countdown-section">
-        <!-- Animated streaks -->
-        <div class="streak streak1"></div>
-        <div class="streak streak2"></div>
-        <div class="streak streak3"></div>
-        <div class="streak streak4"></div>
-        <div class="streak streak5"></div>
-        <div class="streak streak6"></div>
+        <!-- Organic curves -->
+        <div class="curve-1"></div>
+        <div class="curve-2"></div>
+        <div class="curve-3"></div>
 
-        <!-- Countdown card -->
-        <div class="countdown-card">
+        <!-- Floating particles -->
+        <div class="particle particle-1"></div>
+        <div class="particle particle-2"></div>
+        <div class="particle particle-3"></div>
+        <div class="particle particle-4"></div>
+        <div class="particle particle-5"></div>
+        <div class="particle particle-6"></div>
+        <div class="particle particle-7"></div>
+        <div class="particle particle-8"></div>
+        <div class="particle particle-9"></div>
+        <div class="particle particle-10"></div>
+
+        <!-- Large watermark logo -->
+        <div class="logo-watermark">
+            <img src="pickupgo-logo.png" alt="PickUp Go Logo">
+        </div>
+
+        <!-- Content -->
+        <div class="countdown-content">
             <h1>Beta Launch Countdown</h1>
             <p class="subtitle">Join the exclusive team of 30 professional drivers testing PickUp Go before launch. Built by a driver, tested by drivers, perfected for all drivers.</p>
 
-            <p style="color: rgba(255, 255, 255, 0.9); font-size: 24px; font-weight: 600; margin-bottom: 30px;">January 15, 2026</p>
+            <p class="launch-date-display">January 15, 2026</p>
 
             <div class="countdown-timer">
                 <div class="time-unit">
-                    <div class="time-number" id="days">00</div>
-                    <div class="time-label">days</div>
+                    <div class="time-box">
+                        <div class="time-number" id="days">00</div>
+                        <div class="time-label">days</div>
+                    </div>
                 </div>
+                <div class="separator">•</div>
                 <div class="time-unit">
-                    <div class="time-number" id="hours">00</div>
-                    <div class="time-label">hours</div>
+                    <div class="time-box">
+                        <div class="time-number" id="hours">00</div>
+                        <div class="time-label">hours</div>
+                    </div>
                 </div>
+                <div class="separator">•</div>
                 <div class="time-unit">
-                    <div class="time-number" id="minutes">00</div>
-                    <div class="time-label">minutes</div>
+                    <div class="time-box">
+                        <div class="time-number" id="minutes">00</div>
+                        <div class="time-label">minutes</div>
+                    </div>
                 </div>
+                <div class="separator">•</div>
                 <div class="time-unit">
-                    <div class="time-number" id="seconds">00</div>
-                    <div class="time-label">seconds</div>
+                    <div class="time-box">
+                        <div class="time-number" id="seconds">00</div>
+                        <div class="time-label">seconds</div>
+                    </div>
                 </div>
             </div>
 
@@ -1301,7 +1491,7 @@
 
             // If countdown is finished
             if (distance < 0) {
-                document.querySelector('.countdown-timer').innerHTML = '<p style="color: white; font-size: 24px;">Beta Launch is Live! 🚀</p>';
+                document.querySelector('.countdown-timer').innerHTML = '<p style="color: white; font-size: 28px; text-shadow: 0 0 20px rgba(59, 111, 181, 0.8);">Beta Testing in Progress! 🚀</p>';
             }
         }
 
