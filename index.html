@@ -270,39 +270,196 @@
             box-shadow: 0 30px 90px rgba(0,0,0,0.25);
         }
 
-        .final-cta {
+        /* Countdown Section */
+        .countdown-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #2a5a94 0%, #1a3d6b 50%, #0d1f3d 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 40px 20px;
+        }
+
+        /* Animated diagonal streaks */
+        .streak {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(-45deg);
+            animation: moveStreak linear infinite;
+        }
+
+        .streak1 {
+            width: 200px;
+            height: 2px;
+            top: 20%;
+            right: -200px;
+            animation-duration: 8s;
+            animation-delay: 0s;
+        }
+
+        .streak2 {
+            width: 150px;
+            height: 2px;
+            top: 40%;
+            right: -150px;
+            animation-duration: 10s;
+            animation-delay: 2s;
+        }
+
+        .streak3 {
+            width: 180px;
+            height: 2px;
+            top: 60%;
+            right: -180px;
+            animation-duration: 12s;
+            animation-delay: 4s;
+        }
+
+        .streak4 {
+            width: 120px;
+            height: 2px;
+            top: 80%;
+            right: -120px;
+            animation-duration: 9s;
+            animation-delay: 1s;
+        }
+
+        .streak5 {
+            width: 160px;
+            height: 2px;
+            top: 30%;
+            right: -160px;
+            animation-duration: 11s;
+            animation-delay: 3s;
+        }
+
+        .streak6 {
+            width: 140px;
+            height: 2px;
+            top: 70%;
+            right: -140px;
+            animation-duration: 13s;
+            animation-delay: 5s;
+        }
+
+        @keyframes moveStreak {
+            0% {
+                right: -200px;
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                right: 100%;
+                opacity: 0;
+            }
+        }
+
+        /* Countdown card */
+        .countdown-card {
+            background: rgba(91, 143, 217, 0.4);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 50px 100px;
+            max-width: 1000px;
+            width: 100%;
             text-align: center;
-            padding: 120px 20px;
-            background: linear-gradient(135deg, #3B6FB5 0%, #2c5489 100%);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .countdown-card h1 {
             color: white;
-        }
-
-        .final-cta h2 {
-            font-size: 3rem;
-            font-weight: 600;
+            font-size: 48px;
+            font-weight: 700;
             margin-bottom: 20px;
+            letter-spacing: -1px;
         }
 
-        .final-cta p {
-            font-size: 1.3rem;
-            margin-bottom: 40px;
-            opacity: 0.9;
+        .countdown-card .subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .cta-secondary {
+        /* Countdown timer */
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .time-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .time-number {
+            font-size: 72px;
+            font-weight: 700;
+            color: white;
+            line-height: 1;
+            margin-bottom: 10px;
+            text-shadow: 0 4px 20px rgba(59, 111, 181, 0.5);
+            min-width: 100px;
+        }
+
+        .time-label {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: lowercase;
+            font-weight: 500;
+        }
+
+        /* CTA Button */
+        .countdown-card .cta-button {
             display: inline-block;
-            padding: 14px 40px;
             background: white;
             color: #3B6FB5;
+            padding: 18px 50px;
+            border-radius: 50px;
             text-decoration: none;
-            border-radius: 980px;
-            font-size: 1.1rem;
-            font-weight: 500;
+            font-size: 18px;
+            font-weight: 600;
             transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
         }
 
-        .cta-secondary:hover {
-            transform: scale(1.05);
+        .countdown-card .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            background: #f8f9fa;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            }
+            50% {
+                box-shadow: 0 10px 40px rgba(255, 255, 255, 0.3);
+            }
+        }
+
+        /* Launch date */
+        .launch-date {
+            margin-top: 40px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
         }
 
         footer {
@@ -826,6 +983,54 @@
             margin: 0;
         }
         }
+
+        /* Countdown Responsive */
+        @media (max-width: 768px) {
+            .countdown-card {
+                padding: 40px 30px;
+            }
+
+            .countdown-card h1 {
+                font-size: 32px;
+            }
+
+            .countdown-card .subtitle {
+                font-size: 16px;
+            }
+
+            .countdown-timer {
+                gap: 15px;
+            }
+
+            .time-number {
+                font-size: 48px;
+                min-width: 70px;
+            }
+
+            .time-label {
+                font-size: 14px;
+            }
+
+            .countdown-card .cta-button {
+                padding: 15px 40px;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .countdown-timer {
+                gap: 10px;
+            }
+
+            .time-number {
+                font-size: 36px;
+                min-width: 50px;
+            }
+
+            .time-label {
+                font-size: 12px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1029,14 +1234,80 @@
         </div>
     </section>
 
-    <section class="final-cta">
-        <h2>Ready to transform your business?</h2>
-        <p>Join professional drivers worldwide</p>
-        <a href="#" class="cta-secondary">Get Started Today</a>
+    <section class="countdown-section">
+        <!-- Animated streaks -->
+        <div class="streak streak1"></div>
+        <div class="streak streak2"></div>
+        <div class="streak streak3"></div>
+        <div class="streak streak4"></div>
+        <div class="streak streak5"></div>
+        <div class="streak streak6"></div>
+
+        <!-- Countdown card -->
+        <div class="countdown-card">
+            <h1>Beta Launch Countdown</h1>
+            <p class="subtitle">Join the exclusive team of 30 professional drivers testing PickUp Go before launch. Built by a driver, tested by drivers, perfected for all drivers.</p>
+
+            <p style="color: rgba(255, 255, 255, 0.9); font-size: 24px; font-weight: 600; margin-bottom: 30px;">January 15, 2026</p>
+
+            <div class="countdown-timer">
+                <div class="time-unit">
+                    <div class="time-number" id="days">00</div>
+                    <div class="time-label">days</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-number" id="hours">00</div>
+                    <div class="time-label">hours</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-number" id="minutes">00</div>
+                    <div class="time-label">minutes</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-number" id="seconds">00</div>
+                    <div class="time-label">seconds</div>
+                </div>
+            </div>
+
+            <a href="https://forms.gle/RoiDvUL5t9hxVMdz7" target="_blank" class="cta-button">Get Early Access</a>
+
+            <p class="launch-date">Public Launch: March 15, 2026</p>
+        </div>
     </section>
 
     <footer>
         <p>&copy; 2025 PickUp Go. Professional driver management for VTC, taxi, and chauffeur services.</p>
     </footer>
+
+    <script>
+        // Set target date to January 15, 2026 (mid-January)
+        const targetDate = new Date('2026-01-15T00:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            // Calculate time units
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Update display with leading zeros
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
+            // If countdown is finished
+            if (distance < 0) {
+                document.querySelector('.countdown-timer').innerHTML = '<p style="color: white; font-size: 24px;">Beta Launch is Live! 🚀</p>';
+            }
+        }
+
+        // Update countdown every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
 </body>
 </html>
