@@ -767,6 +767,11 @@
             margin: 0 auto;
         }
 
+        /* Mobile line break - hidden on desktop */
+        .mobile-break {
+            display: none;
+        }
+
         /* Fix alternating layout for bottom sections (desktop only) */
         @media (min-width: 769px) {
             .feature-section.reverse-layout {
@@ -821,6 +826,10 @@
         }
 
         @media (max-width: 768px) {
+            .mobile-break {
+                display: inline;
+            }
+
             .hero h1 { font-size: 2.2rem; }
             .hero p { font-size: 1.2rem; }
 
@@ -1399,7 +1408,7 @@
 
     <div class="feature-wrapper gray"><section class="feature-section centered-feature">
         <div class="feature-content">
-            <h2 class="feature-title">Welcome Board, Built In !</h2>
+            <h2 class="feature-title">Welcome Board,<br class="mobile-break">Built In !</h2>
             <p class="feature-description">Filled from your order summary. Just tap to display.</p>
         </div>
         <div class="feature-visual">
