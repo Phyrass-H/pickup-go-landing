@@ -641,6 +641,13 @@
             to { opacity: 1; }
         }
 
+        /* Fix alternating layout for bottom sections (desktop only) */
+        @media (min-width: 769px) {
+            .feature-section.reverse-layout {
+                flex-direction: row-reverse !important;
+            }
+        }
+
         @media (max-width: 1024px) {
             .feature-wrapper {
                 background: #fff;
@@ -1279,7 +1286,7 @@
         </div>
     </section>
 
-    <div class="feature-wrapper gray"><section class="feature-section">
+    <div class="feature-wrapper gray"><section class="feature-section reverse-layout">
         <div class="feature-content">
             <h2 class="feature-title">One tap to navigate.</h2>
             <p class="feature-description">No switching apps, no copying, no searching.<br>Tap any address and GPS opens ready to go.</p>
@@ -1324,7 +1331,7 @@
         </div>
     </section>
 
-    <div class="feature-wrapper gray"><section class="feature-section">
+    <div class="feature-wrapper gray"><section class="feature-section reverse-layout">
         <div class="feature-content">
             <h2 class="feature-title">Quote any trip. Instantly.</h2>
             <p class="feature-description">Client asking for a price? Instant quote with distance, time, fuel, and toll costs included.<br>Turn it into an order with one tap.</p>
@@ -1365,7 +1372,7 @@
         </div>
     </section></div>
 
-    <section class="feature-section">
+    <section class="feature-section reverse-layout">
         <div class="feature-content">
             <h2 class="feature-title">See all your trips at a glance</h2>
             <p class="feature-description">Clean, organized view of every transfer. Active and completed trips, all searchable and sorted.</p>
