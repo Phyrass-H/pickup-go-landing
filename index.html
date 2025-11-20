@@ -641,6 +641,34 @@
             to { opacity: 1; }
         }
 
+        /* Centered feature section for standout content */
+        .feature-section.centered-feature {
+            flex-direction: column !important;
+            text-align: center;
+            padding: 120px 60px !important;
+        }
+
+        .feature-section.centered-feature .feature-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .feature-section.centered-feature .feature-title {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-section.centered-feature .feature-description {
+            font-size: 1.5rem;
+            margin-bottom: 60px;
+        }
+
+        .feature-section.centered-feature .feature-visual {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
         /* Fix alternating layout for bottom sections (desktop only) */
         @media (min-width: 769px) {
             .feature-section.reverse-layout {
@@ -1266,7 +1294,7 @@
         </div>
     </section></div>
 
-    <div class="feature-wrapper gray"><section class="feature-section">
+    <div class="feature-wrapper gray"><section class="feature-section centered-feature">
         <div class="feature-content">
             <h2 class="feature-title">Welcome Board, Built In !</h2>
             <p class="feature-description">Filled from your order summary. Just tap to display.</p>
