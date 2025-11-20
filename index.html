@@ -679,6 +679,11 @@
             .feature-section.normal-layout {
                 flex-direction: row !important;
             }
+
+            /* Fix spacing when text is on the left - push text closer to gap */
+            .feature-section:not(.reverse-layout):not(.centered-feature):not(.dark-section) .feature-content {
+                margin-left: auto;
+            }
         }
 
         @media (max-width: 1024px) {
