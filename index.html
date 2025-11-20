@@ -674,6 +674,11 @@
             .feature-section.reverse-layout {
                 flex-direction: row-reverse !important;
             }
+
+            /* Override nth-child(even) to keep normal layout */
+            .feature-section.normal-layout {
+                flex-direction: row !important;
+            }
         }
 
         @media (max-width: 1024px) {
@@ -1359,7 +1364,7 @@
         setInterval(showTap, 2000);
     </script></div>
 
-    <section class="feature-section">
+    <div class="feature-wrapper gray"><section class="feature-section normal-layout">
         <div class="feature-content">
             <h2 class="feature-title">Every detail.<br>Beautifully organized.</h2>
             <p class="feature-description">Complete trip information, flight tracking, passenger details, and cost breakdowns all in one place.</p>
@@ -1367,7 +1372,7 @@
         <div class="feature-visual">
             <img src="screenshot6.jpg" alt="Order Summary" class="phone-mockup">
         </div>
-    </section>
+    </section></div>
 
     <section class="email-section">
         <h2>Speak their language. Automatically.</h2>
