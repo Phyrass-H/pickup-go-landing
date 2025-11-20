@@ -680,9 +680,13 @@
                 flex-direction: row !important;
             }
 
-            /* Fix spacing when text is on the left - push text closer to gap */
+            /* Fix spacing when text is on the left - push text and image closer to gap */
             .feature-section:not(.reverse-layout):not(.centered-feature):not(.dark-section) .feature-content {
                 margin-left: auto;
+            }
+
+            .feature-section:not(.reverse-layout):not(.centered-feature):not(.dark-section) .feature-visual {
+                justify-content: flex-start;
             }
         }
 
