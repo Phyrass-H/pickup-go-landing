@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PickUp Go - Professional Driver Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for Professional Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600;900&family=Nunito+Sans:wght@400;600&family=Inter:wght@300;400;500;600;800;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -1389,6 +1396,145 @@
                 max-width: 500px;
             }
         }
+
+        /* Roadmap Styles */
+        .roadmap-body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F5F5F7;
+            color: #1d1d1f;
+        }
+
+        /* Brand Fonts */
+        .font-brand-main { font-family: 'Montserrat', sans-serif; }
+        .font-brand-secondary { font-family: 'Nunito Sans', sans-serif; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #3B6FB5; border-radius: 4px; }
+
+        /* Glass Card Style */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 10px 30px -10px rgba(59, 111, 181, 0.10),
+                        0 4px 6px -2px rgba(0, 0, 0, 0.02);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            z-index: 10;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 40%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px -10px rgba(59, 111, 181, 0.15);
+        }
+
+        .content-z { position: relative; z-index: 1; }
+
+        /* Timeline connector line - The "Road" Style */
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0; bottom: 0;
+            width: 14px;
+            z-index: 0;
+            border-left: 2px solid rgba(59, 111, 181, 0.15);
+            border-right: 2px solid rgba(59, 111, 181, 0.15);
+            -webkit-mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
+            mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
+        }
+
+        .timeline-line::after {
+            content: '';
+            position: absolute;
+            left: 50%; transform: translateX(-50%);
+            top: 0; bottom: 0; width: 2px;
+            background-image: linear-gradient(to bottom, rgba(59, 111, 181, 0.3) 50%, transparent 50%);
+            background-size: 2px 20px;
+            background-repeat: repeat-y;
+        }
+
+        /* Breathing Dot Animation */
+        @keyframes breathe {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 4px rgba(255, 255, 255, 1), 0 0 15px rgba(59, 111, 181, 0.4);
+            }
+            50% {
+                transform: scale(1.15);
+                box-shadow: 0 0 0 4px rgba(255, 255, 255, 1), 0 0 25px rgba(59, 111, 181, 0.7);
+            }
+        }
+
+        .breathing-dot {
+            width: 100%; height: 100%;
+            background-color: #3B6FB5;
+            border-radius: 9999px;
+            animation: breathe 3s infinite ease-in-out;
+        }
+
+        /* Architectural Background Text - Refined */
+        .arch-text {
+            position: absolute;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            color: #3B6FB5;
+            opacity: 0.03; /* Optimized Opacity */
+            /* Fluid typography */
+            font-size: clamp(6.625rem, 12vw, 12.625rem);
+            line-height: 0.7;
+            z-index: 0;
+            pointer-events: none;
+            user-select: none;
+            white-space: nowrap;
+            letter-spacing: -0.04em;
+            /* Vertical centering on the text block */
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* Animation Classes */
+        .reveal-on-scroll {
+            opacity: 0; transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
+
+        .icon-box {
+            width: 42px; height: 42px; border-radius: 12px;
+            background-color: #F0F4FA; color: #3B6FB5;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-line { left: 24px; }
+            .arch-text {
+                font-size: 5.5rem;
+                left: 0 !important;
+                right: auto !important;
+                transform: translateY(-50%) !important;
+                opacity: 0.04;
+                margin-left: -10px;
+            }
+        }
+
+        .brand-blue-text { color: #3B6FB5; }
+        .brand-dark-text { color: #0A2239; }
+        .brand-blue-bg { background-color: #3B6FB5; }
     </style>
 </head>
 <body>
@@ -1592,6 +1738,536 @@
         </div>
     </section>
 
+    <!-- Strategic Roadmap Section -->
+    <section style="background-color: #F5F5F7; padding: 80px 0;">
+        <!-- Header Section -->
+        <header class="relative w-full py-24 px-6 text-center overflow-hidden">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-blue-100 rounded-full mix-blend-multiply filter blur-[100px] opacity-40 animate-blob"></div>
+            <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
+                <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6 text-[#0A2239] reveal-on-scroll">
+                    The Journey of <span class="text-[#3B6FB5]">PickUp Go</span>
+                </h1>
+                <div class="reveal-on-scroll delay-100">
+                    <p class="text-xl md:text-2xl text-[#243B70] font-light max-w-2xl mx-auto leading-relaxed">
+                        From a solo vision to the ultimate <span class="font-semibold text-[#3B6FB5]">Global tool</span> for professional drivers.
+                    </p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Timeline Container -->
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 relative mt-24">
+
+            <!-- The Road -->
+            <div class="timeline-line"></div>
+
+            <!-- STEP 1: Solo Dev (VISION) -->
+            <div class="relative flex flex-col md:flex-row items-center mb-16 md:mb-24 reveal-on-scroll">
+                <div class="hidden md:block w-1/2 pr-16 text-right relative">
+                    <!-- Aligned RIGHT (Ends with text) -->
+                    <div class="arch-text right-0 pr-16">VISION</div>
+
+                    <div class="relative z-10">
+                        <div class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">August 2024 - 2025</div>
+                        <h3 class="text-2xl font-bold brand-dark-text">Solo Development</h3>
+                    </div>
+                </div>
+
+                <div class="absolute left-6 md:left-1/2 w-3 h-3 rounded-full -translate-x-1/2 timeline-dot z-10">
+                    <div class="breathing-dot"></div>
+                </div>
+                <div class="w-full md:w-1/2 pl-16 md:pl-16">
+                    <div class="glass-card rounded-3xl p-8">
+                        <div class="content-z">
+                            <div class="md:hidden text-xs font-bold text-gray-400 uppercase mb-2">August 2024 - 2025</div>
+                            <div class="md:hidden text-xl font-bold brand-dark-text mb-2">Solo Development</div>
+
+                            <p class="text-gray-900 font-medium mb-4">Born from real driver experience.</p>
+
+                            <ul class="space-y-2">
+                                <li class="flex items-start text-gray-600 text-sm">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-[#3B6FB5] mt-1.5 mr-3 shrink-0"></span>
+                                    Market research and driver surveys
+                                </li>
+                                <li class="flex items-start text-gray-600 text-sm">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-[#3B6FB5] mt-1.5 mr-3 shrink-0"></span>
+                                    Writing complete project specifications
+                                </li>
+                                <li class="flex items-start text-gray-600 text-sm">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-[#3B6FB5] mt-1.5 mr-3 shrink-0"></span>
+                                    Designing all screens
+                                </li>
+                                <li class="flex items-start text-gray-600 text-sm">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-[#3B6FB5] mt-1.5 mr-3 shrink-0"></span>
+                                    Building the app from scratch
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 2: App Ready (REWARD) - UPDATED WITH FITNESS RING -->
+            <div class="relative flex flex-col md:flex-row-reverse items-center mb-16 md:mb-24 reveal-on-scroll">
+                <!-- Text Container -->
+                <div class="hidden md:block w-1/2 pl-16 text-left relative">
+                    <!-- Aligned LEFT (Starts with text) -->
+                    <div class="arch-text left-0 pl-16">REWARD</div>
+
+                    <div class="relative z-10">
+                        <div class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">November 2025</div>
+                        <h3 class="text-2xl font-bold brand-dark-text">Foundation Ready</h3>
+                    </div>
+                </div>
+
+                <div class="absolute left-6 md:left-1/2 w-3 h-3 rounded-full -translate-x-1/2 timeline-dot z-10">
+                    <div class="breathing-dot"></div>
+                </div>
+                <div class="w-full md:w-1/2 pl-16 md:pr-16">
+                    <div class="glass-card rounded-3xl p-8">
+                        <div class="content-z">
+                            <div class="md:hidden text-xs font-bold text-gray-400 uppercase mb-2">November 2025</div>
+                            <div class="md:hidden text-xl font-bold brand-dark-text mb-4">Foundation Ready</div>
+
+                            <!-- Fitness Ring Layout -->
+                            <div class="flex items-center gap-6">
+                                <div class="flex-1">
+                                    <p class="text-gray-600 leading-relaxed font-medium">
+                                        Core features operational. <br>Infrastructure stress-tested.
+                                    </p>
+                                    <div class="mt-3 inline-flex items-center gap-2">
+                                         <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                                         <span class="text-xs font-bold text-gray-400 uppercase tracking-wide">System Stable</span>
+                                    </div>
+                                </div>
+
+                                <!-- Ring Widget -->
+                                <div class="relative w-20 h-20 shrink-0">
+                                    <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                                        <!-- Track -->
+                                        <circle cx="50" cy="50" r="40" fill="none" stroke="#E5E7EB" stroke-width="8" />
+                                        <!-- Progress (80% = 251.2 * 0.8 dasharray math) -->
+                                        <circle cx="50" cy="50" r="40" fill="none" stroke="#3B6FB5" stroke-width="8" stroke-dasharray="251.2" stroke-dashoffset="50.24" stroke-linecap="round" class="drop-shadow-md" />
+                                    </svg>
+                                    <div class="absolute inset-0 flex flex-col items-center justify-center">
+                                        <span class="text-lg font-bold brand-dark-text">80%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 3: Crowdfunding (FUND) -->
+            <div class="relative flex flex-col md:flex-row items-center mb-16 md:mb-24 reveal-on-scroll">
+                <div class="hidden md:block w-1/2 pr-16 text-right relative">
+                    <!-- Aligned RIGHT -->
+                    <div class="arch-text right-0 pr-16">FUND</div>
+
+                    <div class="relative z-10">
+                        <div class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">December 2025</div>
+                        <h3 class="text-2xl font-bold brand-dark-text">Ulule Campaign</h3>
+                    </div>
+                </div>
+
+                <div class="absolute left-6 md:left-1/2 w-3 h-3 rounded-full -translate-x-1/2 timeline-dot z-10">
+                    <div class="breathing-dot"></div>
+                </div>
+                <div class="w-full md:w-1/2 pl-16 md:pl-16">
+                    <div class="glass-card rounded-3xl p-8 border-blue-200">
+                        <div class="content-z">
+                            <div class="md:hidden text-xs font-bold text-gray-400 uppercase mb-2">December 2025</div>
+                            <div class="md:hidden text-xl font-bold brand-dark-text mb-2">Ulule Campaign</div>
+                            <p class="text-gray-600 leading-relaxed">
+                                Raising funds to finalize development and prepare a professional market entry.
+                            </p>
+                            <div class="mt-4 inline-flex items-center text-sm font-semibold brand-blue-text">
+                                Join the adventure <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 4: Beta (PILOT) -->
+            <div class="relative flex flex-col md:flex-row-reverse items-center mb-16 md:mb-24 reveal-on-scroll">
+                <div class="hidden md:block w-1/2 pl-16 text-left relative">
+                    <!-- Aligned LEFT -->
+                    <div class="arch-text left-0 pl-16">PILOT</div>
+
+                    <div class="relative z-10">
+                        <div class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">Jan - Feb 2026</div>
+                        <h3 class="text-2xl font-bold brand-dark-text">Beta Testing</h3>
+                    </div>
+                </div>
+
+                <div class="absolute left-6 md:left-1/2 w-3 h-3 rounded-full -translate-x-1/2 timeline-dot z-10">
+                    <div class="breathing-dot"></div>
+                </div>
+                <div class="w-full md:w-1/2 pl-16 md:pr-16">
+                    <div class="glass-card rounded-3xl p-8">
+                        <div class="content-z">
+                            <div class="md:hidden text-xs font-bold text-gray-400 uppercase mb-2">Jan - Feb 2026</div>
+                            <div class="md:hidden text-xl font-bold brand-dark-text mb-2">Beta Testing</div>
+                            <p class="text-gray-600 leading-relaxed">
+                                30 professional drivers test the app. Live feedback loops, instant fixes, and polish.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 5: Launch (EXCITING) -->
+            <div class="relative flex flex-col md:flex-row items-center mb-16 md:mb-24 reveal-on-scroll">
+                <div class="hidden md:block w-1/2 pr-16 text-right relative">
+                    <!-- Aligned RIGHT -->
+                    <div class="arch-text right-0 pr-16">EXCITING</div>
+
+                    <div class="relative z-10">
+                        <div class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">March 2026</div>
+                        <h3 class="text-2xl font-bold brand-dark-text">Public Launch 🇫🇷</h3>
+                    </div>
+                </div>
+
+                <!-- FIXED: Standard Breathing Dot (Replaced the reversed white dot) -->
+                <div class="absolute left-6 md:left-1/2 w-3 h-3 rounded-full -translate-x-1/2 timeline-dot z-10">
+                    <div class="breathing-dot"></div>
+                </div>
+
+                <div class="w-full md:w-1/2 pl-16 md:pl-16">
+                    <div class="glass-card rounded-3xl p-8 ring-1 ring-blue-100">
+                        <div class="content-z">
+                            <div class="md:hidden text-xs font-bold text-gray-400 uppercase mb-2">March 2026</div>
+                            <div class="md:hidden text-xl font-bold brand-dark-text mb-2">Public Launch France</div>
+                            <p class="text-gray-600 leading-relaxed font-medium">
+                                Official release on App Store and Google Play. Welcoming our first paying customers.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 6: Growth (REACH) -->
+            <div class="relative flex flex-col md:flex-row-reverse items-center mb-16 md:mb-24 reveal-on-scroll">
+                <div class="hidden md:block w-1/2 pl-16 text-left relative">
+                    <!-- Aligned LEFT -->
+                    <div class="arch-text left-0 pl-16">REACH</div>
+
+                    <div class="relative z-10">
+                        <div class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">Spring - Summer 2026</div>
+                        <h3 class="text-2xl font-bold brand-dark-text">Growth & Marketing</h3>
+                    </div>
+                </div>
+
+                <div class="absolute left-6 md:left-1/2 w-3 h-3 rounded-full -translate-x-1/2 timeline-dot z-10">
+                    <div class="breathing-dot"></div>
+                </div>
+                <div class="w-full md:w-1/2 pl-16 md:pr-16">
+                    <div class="glass-card rounded-3xl p-8">
+                        <div class="content-z">
+                            <div class="md:hidden text-xs font-bold text-gray-400 uppercase mb-2">Spring 2026</div>
+                            <div class="md:hidden text-xl font-bold brand-dark-text mb-2">High Visibility</div>
+                            <p class="text-gray-600 leading-relaxed mb-3">
+                                Strategic presence at major national events throughout the year (e.g., Cannes Festival, Roland-Garros, Monaco F1).
+                            </p>
+                            <ul class="text-sm text-gray-500 space-y-1">
+                                <li class="flex items-center"><i class="fas fa-check text-[10px] text-blue-400 mr-2"></i>Instagram & TikTok content strategy</li>
+                                <li class="flex items-center"><i class="fas fa-check text-[10px] text-blue-400 mr-2"></i>Influencer partnerships</li>
+                                <li class="flex items-center"><i class="fas fa-check text-[10px] text-blue-400 mr-2"></i>Driver communities</li>
+                                <li class="flex items-center"><i class="fas fa-check text-[10px] text-blue-400 mr-2"></i>Rental partnerships</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MILESTONE: BREAK EVEN -->
+            <div class="relative w-full flex justify-center items-center mb-20 reveal-on-scroll z-20">
+                <div class="absolute left-6 md:left-1/2 w-6 h-6 bg-white border-4 border-green-500 rounded-full -translate-x-1/2 shadow-lg"></div>
+                <div class="ml-12 md:ml-0 bg-white border border-green-100 shadow-xl rounded-2xl py-4 px-8 flex flex-col items-center text-center transform transition hover:scale-105">
+                    <span class="text-green-600 font-bold text-xs uppercase tracking-widest mb-1">June 2026 • Milestone</span>
+                    <span class="text-2xl font-extrabold brand-dark-text">Break-Even Reached</span>
+                    <span class="text-gray-500 text-sm mt-1">500 Active Users • Self-Sustainable</span>
+                </div>
+            </div>
+
+            <!-- STEP 7: Smart Tools (EDGE) -->
+            <div class="relative flex flex-col md:flex-row items-center mb-16 md:mb-24 reveal-on-scroll">
+                <div class="hidden md:block w-1/2 pr-16 text-right relative">
+                    <!-- Aligned RIGHT -->
+                    <div class="arch-text right-0 pr-16">EDGE</div>
+
+                    <div class="relative z-10">
+                        <div class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">Mid-2026</div>
+                        <h3 class="text-2xl font-bold brand-dark-text">Smart Tools</h3>
+                    </div>
+                </div>
+                <div class="absolute left-6 md:left-1/2 top-1/2 w-3 h-3 -translate-x-1/2 -translate-y-1/2 z-10">
+                     <div class="breathing-dot rounded-full"></div>
+                </div>
+                <div class="w-full md:w-1/2 pl-16 md:pl-16">
+                    <div class="space-y-4">
+                        <!-- Card 1 -->
+                        <div class="glass-card rounded-3xl p-6 flex items-start gap-4">
+                            <div class="icon-box"><i class="fas fa-plane"></i></div>
+                            <div class="content-z">
+                                <h4 class="font-bold brand-dark-text">Flight Tracker</h4>
+                                <p class="text-sm text-gray-600 mt-1">Real-time updates integrated directly into the app. Clean, simple design.</p>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="glass-card rounded-3xl p-6 flex items-start gap-4">
+                            <div class="icon-box"><i class="fas fa-gas-pump"></i></div>
+                            <div class="content-z">
+                                <h4 class="font-bold brand-dark-text">Gas Station Radar</h4>
+                                <p class="text-sm text-gray-600 mt-1">Live fuel prices based on location. Find the cheapest pump instantly.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 8: Business Ecosystem (CONNECT) -->
+            <div class="relative flex flex-col md:flex-row-reverse items-center mb-16 md:mb-24 reveal-on-scroll">
+                <div class="hidden md:block w-1/2 pl-16 text-left relative">
+                    <!-- Aligned LEFT -->
+                    <div class="arch-text left-0 pl-16">CONNECT</div>
+
+                    <div class="relative z-10">
+                        <div class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">Late 2026</div>
+                        <h3 class="text-2xl font-bold brand-dark-text">Business Ecosystem</h3>
+                    </div>
+                </div>
+                <div class="absolute left-6 md:left-1/2 top-1/2 w-3 h-3 -translate-x-1/2 -translate-y-1/2 z-10">
+                     <div class="breathing-dot rounded-full"></div>
+                </div>
+                <div class="w-full md:w-1/2 pl-16 md:pr-16">
+                    <div class="space-y-4">
+                        <div class="glass-card rounded-3xl p-6 flex items-start gap-4">
+                            <div class="icon-box"><i class="fas fa-network-wired"></i></div>
+                            <div class="content-z">
+                                <h4 class="font-bold brand-dark-text">Platform Connect</h4>
+                                <p class="text-sm text-gray-600 mt-1">Unified income dashboard. Uber, Bolt, and FreeNow earnings in one single view.</p>
+                            </div>
+                        </div>
+                        <div class="glass-card rounded-3xl p-6 flex items-start gap-4">
+                            <div class="icon-box"><i class="fas fa-file-invoice-dollar"></i></div>
+                            <div class="content-z">
+                                <h4 class="font-bold brand-dark-text">Accounting Integration</h4>
+                                <p class="text-sm text-gray-600 mt-1">One-click CSV export compatible with all major accounting software.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 9: AI Assistant (ALLY) -->
+            <div class="relative flex flex-col md:flex-row items-center mb-16 md:mb-24 reveal-on-scroll">
+                <div class="hidden md:block w-1/2 pr-16 text-right relative">
+                    <!-- Aligned RIGHT -->
+                    <div class="arch-text right-0 pr-16">ALLY</div>
+
+                    <div class="relative z-10">
+                        <div class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">Late 2026</div>
+                        <h3 class="text-2xl font-bold brand-dark-text">The AI Assistant</h3>
+                    </div>
+                </div>
+                <div class="absolute left-6 md:left-1/2 w-3 h-3 rounded-full -translate-x-1/2 timeline-dot z-10">
+                    <div class="breathing-dot"></div>
+                </div>
+                <div class="w-full md:w-1/2 pl-16 md:pl-16">
+                    <div class="glass-card rounded-3xl p-6 ring-1 ring-purple-100">
+                        <div class="content-z">
+                            <div class="md:hidden text-xs font-bold text-gray-400 uppercase mb-2">Late 2026</div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="icon-box text-purple-600 bg-purple-50"><i class="fas fa-microphone"></i></div>
+                                    <h4 class="font-bold brand-dark-text">Voice Assistant</h4>
+                                </div>
+                                <span class="text-[10px] font-bold bg-[#0A2239] text-white px-2 py-1 rounded uppercase">New</span>
+                            </div>
+                            <p class="text-sm text-gray-600 italic mb-2 pl-2 border-l-2 border-purple-200">"Pick up Martin Thursday at 9 AM to the Airport."</p>
+                            <p class="text-sm text-gray-500">Hands-free management. Create orders and ask business questions while driving.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 10: Web Dashboard (WEB) -->
+             <div class="relative flex flex-col md:flex-row-reverse items-center mb-16 md:mb-24 reveal-on-scroll">
+                <div class="hidden md:block w-1/2 pl-16 text-left relative">
+                    <!-- Aligned LEFT -->
+                    <div class="arch-text left-0 pl-16">WEB</div>
+
+                    <div class="relative z-10">
+                        <div class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">Early 2027</div>
+                        <h3 class="text-2xl font-bold brand-dark-text">Web Dashboard</h3>
+                    </div>
+                </div>
+                <div class="absolute left-6 md:left-1/2 w-3 h-3 rounded-full -translate-x-1/2 timeline-dot z-10">
+                    <div class="breathing-dot"></div>
+                </div>
+                <div class="w-full md:w-1/2 pl-16 md:pr-16">
+                    <div class="glass-card rounded-3xl p-8">
+                        <div class="content-z flex flex-col gap-4">
+                            <div class="md:hidden text-xs font-bold text-gray-400 uppercase">Early 2027</div>
+                            <div class="flex items-center gap-4">
+                                 <div class="icon-box"><i class="fas fa-desktop"></i></div>
+                                 <h4 class="font-bold text-lg brand-dark-text">Full Desktop Version</h4>
+                            </div>
+                            <p class="text-gray-600">
+                                 Manage everything from your computer. Perfect for back-office work, detailed reports, and bulk operations.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 11: Team Growth & UK (SCALE) -->
+            <div class="relative flex flex-col md:flex-row items-center mb-16 md:mb-24 reveal-on-scroll">
+                <div class="hidden md:block w-1/2 pr-16 text-right relative">
+                    <!-- Aligned RIGHT -->
+                    <div class="arch-text right-0 pr-16">SCALE</div>
+
+                    <div class="relative z-10">
+                        <div class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">Early 2027</div>
+                        <h3 class="text-2xl font-bold brand-dark-text">Team Growth & Expansion</h3>
+                    </div>
+                </div>
+                <div class="absolute left-6 md:left-1/2 w-3 h-3 rounded-full -translate-x-1/2 timeline-dot z-10">
+                    <div class="breathing-dot"></div>
+                </div>
+                <div class="w-full md:w-1/2 pl-16 md:pl-16">
+                    <div class="glass-card rounded-3xl p-8">
+                        <div class="content-z">
+                            <div class="md:hidden text-xs font-bold text-gray-400 uppercase mb-2">Early 2027</div>
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="icon-box"><i class="fas fa-users"></i></div>
+                                <h4 class="font-bold text-lg brand-dark-text">France Stable & Proven</h4>
+                            </div>
+                            <p class="text-gray-600 mb-4">
+                                 Building the team to support strategic expansion.
+                            </p>
+                            <div class="flex items-center gap-2 text-gray-800 font-medium bg-blue-50 p-3 rounded-xl border border-blue-100">
+                                <i class="fas fa-flag text-blue-600"></i> United Kingdom - First International Market
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 12: Enterprise (MOBILITY) -->
+            <div class="relative flex flex-col md:flex-row-reverse items-center mb-24 reveal-on-scroll">
+                <div class="hidden md:block w-1/2 pl-16 text-left relative">
+                    <!-- Aligned LEFT -->
+                    <div class="arch-text left-0 pl-16">MOBILITY</div>
+
+                    <div class="relative z-10">
+                        <div class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">Mid-2027</div>
+                        <h3 class="text-2xl font-bold brand-dark-text">Enterprise Fleet</h3>
+                    </div>
+                </div>
+                <div class="absolute left-6 md:left-1/2 w-3 h-3 rounded-full -translate-x-1/2 timeline-dot z-10">
+                    <div class="breathing-dot"></div>
+                </div>
+                <div class="w-full md:w-1/2 pl-16 md:pr-16">
+                    <div class="glass-card rounded-3xl p-8 bg-gradient-to-br from-white to-blue-50">
+                        <div class="content-z">
+                            <div class="md:hidden text-xs font-bold text-gray-400 uppercase mb-2">Mid-2027</div>
+                             <div class="flex items-center gap-4 mb-3">
+                                 <div class="icon-box"><i class="fas fa-building"></i></div>
+                                 <h4 class="font-bold text-lg brand-dark-text">Fleet Management System</h4>
+                            </div>
+                            <p class="text-gray-600">
+                                Dedicated dispatch system for companies managing 5-20 drivers. Internal messaging, assignment, and analytics.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Future Horizons Section -->
+        <section class="relative max-w-4xl mx-auto px-6 py-24 mt-10 border-t border-gray-200 overflow-hidden">
+            <div class="arch-text" style="top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.02;">FUTURE</div>
+
+            <div class="text-center mb-16 relative z-10">
+                <h2 class="text-3xl md:text-4xl font-bold brand-dark-text mb-4">Future Horizons</h2>
+                <p class="text-gray-500">The features defining our next chapter.</p>
+            </div>
+
+            <!-- Clean Specs Sheet Layout -->
+            <div class="bg-white rounded-3xl shadow-sm border border-gray-200 overflow-hidden relative z-10">
+
+                <!-- Row 1: Continuous Improvements -->
+                <div class="p-8 border-b border-gray-100 flex flex-col md:flex-row gap-6 md:gap-12">
+                    <div class="md:w-1/3">
+                        <h3 class="text-xl font-bold brand-dark-text mb-2">Experience</h3>
+                        <p class="text-sm text-gray-500">Continuous polish and user-centric features.</p>
+                    </div>
+                    <div class="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-check text-[#3B6FB5] mt-1"></i>
+                            <span class="text-gray-700">Regional Event Alerts</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-check text-[#3B6FB5] mt-1"></i>
+                            <span class="text-gray-700">Smart Traffic Notifications</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-check text-[#3B6FB5] mt-1"></i>
+                            <span class="text-gray-700">Seasonal App Themes</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-check text-[#3B6FB5] mt-1"></i>
+                            <span class="text-gray-700">Advanced Customization</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 2: Localization -->
+                <div class="p-8 border-b border-gray-100 flex flex-col md:flex-row gap-6 md:gap-12 bg-gray-50/50">
+                    <div class="md:w-1/3">
+                        <h3 class="text-xl font-bold brand-dark-text mb-2">Localization & AI</h3>
+                        <p class="text-sm text-gray-500">Making the app native to every driver.</p>
+                    </div>
+                    <div class="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-language text-[#3B6FB5] mt-1"></i>
+                            <span class="text-gray-700">Spanish & Italian Support</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-robot text-[#3B6FB5] mt-1"></i>
+                            <span class="text-gray-700">Written AI Order Creation</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-mobile-alt text-[#3B6FB5] mt-1"></i>
+                            <span class="text-gray-700">Enhanced Mobile Interface</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 3: Global Vision -->
+                <div class="p-8 flex flex-col md:flex-row gap-6 md:gap-12 items-center">
+                    <div class="md:w-1/3">
+                        <h3 class="text-xl font-bold brand-dark-text mb-2">Global Vision</h3>
+                        <div class="text-[#3B6FB5] font-bold text-2xl">2028 - 2029</div>
+                    </div>
+                    <div class="md:w-2/3 w-full">
+                        <div class="p-4 rounded-xl border border-dashed border-blue-300 bg-blue-50 flex items-center justify-between">
+                            <span class="font-semibold text-gray-800">Pan-European Expansion & United States</span>
+                            <i class="fas fa-globe-americas text-[#3B6FB5] text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </section>
+
     <section class="countdown-section">
         <!-- Organic curves -->
         <div class="curve-1"></div>
@@ -1701,6 +2377,30 @@
         // Update countdown every second
         updateCountdown();
         setInterval(updateCountdown, 1000);
+    </script>
+
+    <!-- Roadmap Scroll Reveal Script -->
+    <script>
+        // Simple Intersection Observer for the scroll reveal effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Only animate once
+                    }
+                });
+            }, observerOptions);
+
+            const elements = document.querySelectorAll('.reveal-on-scroll');
+            elements.forEach(el => observer.observe(el));
+        });
     </script>
 </body>
 </html>
