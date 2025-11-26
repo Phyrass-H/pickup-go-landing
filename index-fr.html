@@ -1493,7 +1493,7 @@
             font-weight: 900;
             color: #3B6FB5;
             opacity: 0.03; /* Optimized Opacity */
-            /* Fluid typography */
+            /* Fluid typography - for centered watermarks */
             font-size: clamp(6.625rem, 12vw, 12.625rem);
             line-height: 0.7;
             z-index: 0;
@@ -1504,6 +1504,12 @@
             /* Vertical centering on the text block */
             top: 50%;
             transform: translateY(-50%);
+        }
+
+        /* Responsive sizing for side-positioned watermarks */
+        .arch-text.left-0,
+        .arch-text.right-0 {
+            font-size: clamp(4rem, 8vw, 9rem);
         }
 
         /* Animation Classes */
