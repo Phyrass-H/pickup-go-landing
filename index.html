@@ -1581,10 +1581,34 @@
             }
         }
     </style>
+
+    <!-- Language Detection and Auto-Redirect Script -->
+    <script>
+        (function() {
+            // Check if user has manually selected a language
+            const userLanguageChoice = localStorage.getItem('userLanguageChoice');
+
+            // If user manually chose English, respect that choice
+            if (userLanguageChoice === 'en') {
+                return;
+            }
+
+            // If no manual choice, auto-detect browser language
+            if (!userLanguageChoice) {
+                const browserLang = navigator.language || navigator.userLanguage;
+
+                // Check if browser language is French
+                if (browserLang && browserLang.toLowerCase().startsWith('fr')) {
+                    // Redirect to French version
+                    window.location.href = 'index-fr.html';
+                }
+            }
+        })();
+    </script>
 </head>
 <body>
     <div class="language-switcher">
-        <a href="index-fr.html">FR</a>
+        <a href="index-fr.html" onclick="localStorage.setItem('userLanguageChoice', 'fr')">FR</a>
     </div>
 <section class="hero">
         <div class="logo-container">
