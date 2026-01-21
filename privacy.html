@@ -75,10 +75,12 @@
             font-weight: 600;
             margin-bottom: 15px;
             color: #1d1d1f;
+            border-bottom: 2px solid #f5f5f7; 
+            padding-bottom: 10px;
         }
 
         .section h3 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 600;
             margin-top: 25px;
             margin-bottom: 10px;
@@ -89,6 +91,7 @@
             font-size: 1.1rem;
             color: #1d1d1f;
             margin-bottom: 15px;
+            text-align: justify;
         }
 
         .section ul {
@@ -100,6 +103,11 @@
             font-size: 1.1rem;
             color: #1d1d1f;
             margin-bottom: 8px;
+        }
+
+        strong {
+            font-weight: 600;
+            color: #000;
         }
 
         @media (max-width: 768px) {
@@ -124,106 +132,147 @@
 <body>
     <div class="header">
         <h1>Privacy Policy</h1>
-        <p class="last-updated">Last updated: January 21, 2026</p>
+        <p class="last-updated">Last updated: January 17, 2026</p>
         <div class="nav-links">
             <a href="index.html">← Back to Home</a>
-            <a href="privacy-fr.html">Français</a>
-            <a href="terms.html">Terms of Service</a>
+            <a href="terms.html">Terms of Use</a>
         </div>
     </div>
 
     <div class="content">
         <div class="section">
-            <h2>1. Introduction</h2>
-            <p>Welcome to PickUp Go. We respect your privacy and are committed to protecting your personal data. This privacy policy informs you about how we collect, use, and protect your information when you use our application.</p>
+            <h2>Introduction</h2>
+            <p>PickUp Go is committed to protecting the privacy of its users and ensuring the security of their personal data. This Privacy Policy describes what data is collected via the PickUp Go application, how it is used, stored, and protected. It also explains the rights users have regarding their data, in compliance with the General Data Protection Regulation (GDPR) and applicable French laws.</p>
         </div>
 
         <div class="section">
-            <h2>2. Data We Collect</h2>
-            <h3>2.1 Personal Data</h3>
+            <h2>Data Collected</h2>
+            <p>We collect different categories of personal data in order to provide and improve the PickUp Go service. This data includes specifically:</p>
+            
+            <h3>Device Permissions</h3>
+            <p>The PickUp Go application may request access to the following features of your device:</p>
             <ul>
-                <li>First and last name</li>
-                <li>Email address</li>
-                <li>Phone number</li>
-                <li>Driver's license information (if applicable)</li>
+                <li><strong>Location:</strong> Used for route calculation, GPS navigation, and estimation of distances and travel times. You can disable this permission at any time in your device settings.</li>
+                <li><strong>Notifications:</strong> Used to send you ride reminders, booking confirmations, and flight tracking alerts. You can manage your notification preferences in the application settings.</li>
+                <li><strong>Internet Access:</strong> Necessary to synchronize your data with our servers and access the application's online features.</li>
             </ul>
 
-            <h3>2.2 Location Data</h3>
-            <p>We collect your geographic location to provide navigation and ride management services. This data is essential for the application to function.</p>
+            <h3>User and Company Information</h3>
+            <p>Identification and contact data (first name, last name, email address, phone number), professional information (company name, address, business contact details), and account login information.</p>
 
-            <h3>2.3 Usage Data</h3>
+            <h3>Ride History</h3>
+            <p>Details of rides performed via the application (dates and times of trips, pick-up and drop-off addresses, distance traveled, duration and route history, as well as any other information related to rides).</p>
+
+            <h3>Additional Drivers</h3>
+            <p>Information on additional drivers that the user may register in the application (name, contact details, driving license, or other necessary identification information).</p>
+
+            <h3>User's Clients</h3>
+            <p>Information on clients recorded by the user in the application, for example, final client contact details (name, delivery or destination address, phone number, etc.) necessary for the proper conduct of rides.</p>
+        </div>
+
+        <div class="section">
+            <h2>Purposes of Data Collection</h2>
+            <p>The collected data is used solely for the following purposes:</p>
             <ul>
-                <li>Information about completed rides</li>
-                <li>Application usage statistics</li>
-                <li>Preferences and settings</li>
+                <li><strong>Service Provision:</strong> Ensuring the proper functioning of the PickUp Go application and the provision of associated services (user account management, planning and tracking of rides, communication of ride information to relevant drivers and clients).</li>
+                <li><strong>Improvement of User Experience:</strong> Improving our services and user experience by analyzing the operation of the application and ride histories to optimize routes, propose new features, or improve the interface. Your data may also help us provide effective customer support and respond to your requests more quickly.</li>
+                <li><strong>Communications:</strong> Using your contact details to send you service-related notifications (e.g., confirmation of ride acceptance, application updates, or important information regarding your account). These communications concern only the operation of the application and do not contain unsolicited commercial prospecting.</li>
+            </ul>
+            <p>All uses of your personal data are based on an appropriate legal basis, either because they are necessary for the <strong>performance of the contract</strong> (use of the PickUp Go application), or based on our <strong>legitimate interest</strong> in improving our services. When required by law, we may also seek your specific consent.</p>
+        </div>
+
+        <div class="section">
+            <h2>Data Storage Location</h2>
+            <p>Your personal data is hosted on secure servers located in France and within the European Union (Host: Hetzner Online GmbH, Germany). We ensure that no transfer of your data to a country outside the European Economic Area (EEA) takes place without respecting appropriate guarantees compliant with regulations. Storage of your data in France and Europe guarantees that it benefits from the level of protection required by the GDPR and French legislation.</p>
+        </div>
+
+        <div class="section">
+            <h2>Third-Party Services</h2>
+            <p>To provide certain features of the application, we use third-party services that may have access to some of your data. These providers are subject to contractual confidentiality obligations and may only use your data within the scope of the services they provide to us. These services include:</p>
+            <ul>
+                <li><strong>Mapping Services (Google Maps / Mapbox):</strong> For route calculation, map display, and distance estimation. These services may collect location data in accordance with their own privacy policies.</li>
+                <li><strong>Flight Tracking Services:</strong> To provide real-time information on your clients' flights. Only flight numbers are transmitted to these services.</li>
+                <li><strong>Notification Services (Firebase Cloud Messaging):</strong> For sending push notifications to your device.</li>
+                <li><strong>Cloud Hosting Services (Google Cloud Platform / Hetzner):</strong> For certain infrastructure and features of the application.</li>
+            </ul>
+            <p>We encourage you to consult the privacy policies of these third-party services.</p>
+        </div>
+
+        <div class="section">
+            <h2>Data Sharing with Third Parties</h2>
+            <p>PickUp Go <strong>does not sell, trade, or transfer</strong> your personal data to third parties for commercial or advertising purposes. All data you entrust to us is used exclusively for the needs of the PickUp Go service and by our authorized personnel or technical providers (hosting, maintenance) subject to a confidentiality obligation and acting according to our instructions.</p>
+            <p>None of your information is shared with commercial or advertising partners without your explicit consent. We may only be required to disclose certain data if the law requires us to do so (for example, upon request from a legal or judicial authority).</p>
+        </div>
+
+        <div class="section">
+            <h2>Data Retention Period</h2>
+            <p>We retain your personal data for the entire duration of the user's use of our services. As long as your PickUp Go account remains active, the associated data is retained.</p>
+            <p>If you decide to delete your account or in case of prolonged inactivity followed by an account deletion, your data will be <strong>archived securely for an additional period of two years</strong> from the deletion. During this period, access to your data is restricted solely to purposes permitted by law (e.g., claims management or compliance with legal obligations). At the end of these two years, all of your personal data will be permanently deleted from our systems.</p>
+            <p>If certain information must be kept longer due to legal obligations (e.g., accounting documents), it will be subject to separate archiving in accordance with applicable law.</p>
+        </div>
+
+        <div class="section">
+            <h2>Account Deletion</h2>
+            <p>You may delete your PickUp Go account at any time:</p>
+            <ul>
+                <li><strong>From the Application:</strong> Go to Settings > My Account > Delete my account.</li>
+                <li><strong>By Email:</strong> Send your request to <a href="mailto:support@pickupgo.cloud" style="color:#0066cc;">support@pickupgo.cloud</a>.</li>
+            </ul>
+            <p>Following your deletion request, your account will be deactivated immediately, and your data will be processed in accordance with the "Data Retention Period" section above.</p>
+        </div>
+
+        <div class="section">
+            <h2>Protection of Minors</h2>
+            <p>The PickUp Go application is intended exclusively for transport professionals (VTC drivers, taxis, private chauffeurs) and is not designed to be used by persons under 18 years of age. We do not knowingly collect personal data concerning minors. If we discover that personal data of a minor has been collected by mistake, we will delete it as soon as possible.</p>
+        </div>
+
+        <div class="section">
+            <h2>Cookies and Similar Technologies</h2>
+            <p>The PickUp Go mobile application does not use cookies. However, we may use local storage technologies on your device to improve application performance and remember your preferences (language, theme, etc.).</p>
+        </div>
+
+        <div class="section">
+            <h2>User Rights regarding Personal Data</h2>
+            <p>In accordance with the GDPR and the French Data Protection Act (Loi Informatique et Libertés), you have rights regarding the personal data we process about you. These rights can be exercised at any time by contacting us (see "Contact" section below) and providing proof of your identity. Your rights include specifically:</p>
+            <ul>
+                <li><strong>Right of access:</strong> You have the right to obtain confirmation that personal data concerning you is processed by PickUp Go and to receive a copy of it, as well as information on the purposes of the processing, the categories of data concerned, and the recipients of this data.</li>
+                <li><strong>Right to rectification:</strong> You may request the correction of inaccurate or incomplete data concerning you, so that we have up-to-date and accurate data.</li>
+                <li><strong>Right to erasure (right to be forgotten):</strong> You may request the deletion of your personal data, within the limits of our legal obligations.</li>
+                <li><strong>Right to portability:</strong> Upon request, we can provide you with the personal data you have provided to us, in a structured, commonly used, and machine-readable format.</li>
+                <li><strong>Right to object:</strong> You have the right to object, for reasons relating to your particular situation, at any time, to the processing of your personal data based on our legitimate interest.</li>
+                <li><strong>Right to restriction of processing:</strong> In certain cases provided for by regulations, you may request the temporary suspension of the processing of your data.</li>
+                <li><strong>Withdrawal of consent:</strong> When the processing of your data is based on your consent, you have the right to withdraw this consent at any time.</li>
+                <li><strong>Right to lodge a complaint:</strong> If you consider that your rights are not respected, you have the right to lodge a complaint with the Commission Nationale de l'Informatique et des Libertés (CNIL) - www.cnil.fr.</li>
             </ul>
         </div>
 
         <div class="section">
-            <h2>3. How We Use Your Data</h2>
-            <p>We use your data to:</p>
+            <h2>Data Security</h2>
+            <p>We implement appropriate technical and organizational security measures to protect your personal data against loss, misuse, unauthorized access, disclosure, or alteration. These measures include specifically:</p>
             <ul>
-                <li>Provide and improve our services</li>
-                <li>Manage your user account</li>
-                <li>Process your rides and payments</li>
-                <li>Send you important notifications about the service</li>
-                <li>Enhance security and prevent fraud</li>
-                <li>Analyze application usage to improve it</li>
+                <li><strong>Data Encryption:</strong> Exchanges between the PickUp Go application and our servers are secured by encryption protocols (TLS/SSL) to protect your information during transmission. Sensitive data stored in our databases is also encrypted at rest.</li>
+                <li><strong>Secure Authentication:</strong> User passwords are protected by a secure hashing algorithm (BCrypt) and are never stored in plain text.</li>
+                <li><strong>Access Control and Infrastructure Protection:</strong> We strictly limit access to your data to only those employees and collaborators who need it to operate the service, and who are subject to confidentiality obligations.</li>
+                <li><strong>Regular Backups:</strong> Your data is backed up daily to prevent any data loss.</li>
+                <li><strong>Security Tests and Updates:</strong> We regularly perform updates to our software and infrastructure to integrate the latest security patches.</li>
             </ul>
+            <p>In the event of a personal data breach, we undertake to notify the affected users and the competent authority within the required legal deadlines.</p>
         </div>
 
         <div class="section">
-            <h2>4. Data Sharing</h2>
-            <p>We do not sell your personal data. We may share your information with:</p>
-            <ul>
-                <li><strong>Service providers:</strong> Third parties who help us provide our services (hosting, payments, analytics)</li>
-                <li><strong>Legal obligations:</strong> When required by law or to protect our rights</li>
-                <li><strong>Business partners:</strong> Only with your explicit consent</li>
-            </ul>
+            <h2>Changes to this Privacy Policy</h2>
+            <p>We may occasionally modify this Privacy Policy, particularly to comply with any legal, regulatory, technical, or functional developments. In the event of a substantial update, we will inform you via the application or by any other available means of communication. We encourage you to consult this policy regularly to stay informed of the latest ways we protect your data. The date of the last update appears at the beginning of the document.</p>
         </div>
 
         <div class="section">
-            <h2>5. Data Security</h2>
-            <p>We implement appropriate technical and organizational security measures to protect your data against unauthorized access, modification, disclosure, or destruction.</p>
+            <h2>Contact</h2>
+            <p>For any questions regarding this Privacy Policy or to exercise your rights regarding your personal data, you may contact us:</p>
+            <p><strong>Email:</strong> <a href="mailto:support@pickupgo.cloud" style="color:#0066cc;">support@pickupgo.cloud</a></p>
+            <p><strong>Postal Address:</strong> SAS Cactus, 1055 Chemin de Rabiac Estagnol, 06600 Antibes, France</p>
+            <p>We will do our utmost to respond to your requests as soon as possible and to resolve any concerns regarding your personal data.</p>
         </div>
 
-        <div class="section">
-            <h2>6. Your Rights</h2>
-            <p>In accordance with GDPR and applicable laws, you have the right to:</p>
-            <ul>
-                <li>Access your personal data</li>
-                <li>Rectify inaccurate data</li>
-                <li>Request deletion of your data</li>
-                <li>Object to the processing of your data</li>
-                <li>Request data portability</li>
-                <li>Withdraw your consent at any time</li>
-            </ul>
-            <p>To exercise these rights, contact us at: <strong>support@pickupgo.cloud</strong></p>
-        </div>
-
-        <div class="section">
-            <h2>7. Data Retention</h2>
-            <p>We retain your personal data for as long as necessary to provide our services and comply with our legal obligations. When you delete your account, your data is erased within 30 days, except where legal retention requirements apply.</p>
-        </div>
-
-        <div class="section">
-            <h2>8. Cookies and Similar Technologies</h2>
-            <p>We use cookies and similar technologies to improve your experience, analyze application usage, and personalize content. You can manage your cookie preferences in the application settings.</p>
-        </div>
-
-        <div class="section">
-            <h2>9. Changes to This Policy</h2>
-            <p>We may update this privacy policy from time to time. We will notify you of any significant changes via email or through an in-app notification.</p>
-        </div>
-
-        <div class="section">
-            <h2>10. Contact</h2>
-            <p>For any questions regarding this privacy policy or your personal data, contact us:</p>
-            <ul>
-                <li>Email: <strong>support@pickupgo.cloud</strong></li>
-                <li>Address: PickUp Go, [Address to be completed]</li>
-            </ul>
-        </div>
+        <p style="text-align:center; color:#6e6e73; font-size:0.9rem; margin-top:50px; border-top: 1px solid #e5e5e7; padding-top: 20px;">© 2026 PickUp Go - SAS Cactus. All rights reserved.</p>
     </div>
 </body>
 </html>
