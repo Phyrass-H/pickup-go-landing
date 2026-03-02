@@ -1553,6 +1553,9 @@
             top: 20px;
             right: 20px;
             z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .language-switcher a {
@@ -1574,10 +1577,21 @@
             transform: translateY(-1px);
         }
 
+        .language-switcher a.pricing-btn {
+            background: #3B6FB5;
+            color: #fff;
+        }
+
+        .language-switcher a.pricing-btn:hover {
+            background: #2C5A96;
+            box-shadow: 0 4px 15px rgba(59,111,181,0.35);
+        }
+
         @media (max-width: 768px) {
             .language-switcher {
                 top: 15px;
                 right: 15px;
+                gap: 8px;
             }
 
             .language-switcher a {
@@ -1613,6 +1627,7 @@
 </head>
 <body>
     <div class="language-switcher">
+        <a href="pricing-tiers-en.html" class="pricing-btn">Pricing</a>
         <a href="index-fr.html" onclick="localStorage.setItem('userLanguageChoice', 'fr')">FR</a>
     </div>
 <section class="hero">
@@ -2425,6 +2440,8 @@
             &copy; 2026 PickUp Go &mdash; SAS Cactus
         </p>
         <p style="font-size: 0.9rem; color: #6e6e73; margin: 10px 0 0 0;">
+            <a href="/pricing-tiers-en.html" style="color: #6e6e73; text-decoration: none; transition: opacity 0.3s;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Pricing</a>
+            <span style="margin: 0 8px;">|</span>
             <a href="/privacy.html" style="color: #6e6e73; text-decoration: none; transition: opacity 0.3s;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Privacy Policy</a>
             <span style="margin: 0 8px;">|</span>
             <a href="/terms.html" style="color: #6e6e73; text-decoration: none; transition: opacity 0.3s;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Terms of Service</a>

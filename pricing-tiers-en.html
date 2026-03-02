@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://pickupgo.cloud/pricing-tiers-en.html" />
+<title>PickUp Go — Pricing</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #3B6FB5;
+    --blue-dark: #2C5A96;
+    --blue-light: #EBF2FA;
+    --navy: #1a1a2e;
+    --text: #374151;
+    --muted: #6b7280;
+    --light-muted: #9ca3af;
+    --green-bg: #d1fae5;
+    --green: #059669;
+    --blue-check-bg: #dbeafe;
+    --blue-check: #2563eb;
+    --amber-bg: #fef3c7;
+    --amber: #92400e;
+    --surface: #ffffff;
+    --bg: #f6f7fb;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: var(--text);
+  }
+
+  /* ── BACKGROUND ATMOSPHERE ── */
+  .bg-glow {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .bg-glow::before {
+    content: '';
+    position: absolute;
+    width: 800px;
+    height: 800px;
+    top: -200px;
+    left: -200px;
+    background: radial-gradient(circle, rgba(59, 111, 181, 0.08) 0%, transparent 70%);
+    animation: float-glow 20s ease-in-out infinite;
+  }
+
+  .bg-glow::after {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    bottom: -150px;
+    right: -150px;
+    background: radial-gradient(circle, rgba(59, 111, 181, 0.06) 0%, transparent 70%);
+    animation: float-glow 25s ease-in-out infinite reverse;
+  }
+
+  @keyframes float-glow {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(60px, 40px) scale(1.1); }
+    66% { transform: translate(-30px, 60px) scale(0.95); }
+  }
+
+  /* ── SUBTLE GRID PATTERN ── */
+  .bg-grid {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: 
+      linear-gradient(rgba(59, 111, 181, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59, 111, 181, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 100%);
+  }
+
+  /* ── MAIN SECTION ── */
+  .pricing-section {
+    position: relative;
+    z-index: 1;
+    padding: 80px 24px 100px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* ── HEADER ── */
+  .pricing-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .pricing-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--blue-light);
+    color: var(--blue);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fade-up 0.6s ease forwards;
+  }
+
+  .pricing-badge svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  h1 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 16px;
+    opacity: 0;
+    animation: fade-up 0.6s ease 0.1s forwards;
+  }
+
+  h1 .accent {
+    background: linear-gradient(135deg, var(--blue), #5b8fd4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .pricing-subtitle {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 480px;
+    margin: 0 auto 32px;
+    line-height: 1.6;
+    opacity: 0;
+    animation: fade-up 0.6s ease 0.2s forwards;
+  }
+
+  /* ── BILLING TOGGLE ── */
+  .billing-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    background: white;
+    padding: 6px 8px;
+    border-radius: 100px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.04);
+    opacity: 0;
+    animation: fade-up 0.6s ease 0.3s forwards;
+  }
+
+  .billing-option {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--light-muted);
+    padding: 8px 20px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+    position: relative;
+  }
+
+  .billing-option.active {
+    background: var(--blue);
+    color: white;
+    box-shadow: 0 2px 8px rgba(59, 111, 181, 0.3);
+  }
+
+  .billing-option:not(.active):hover {
+    color: var(--navy);
+  }
+
+  .save-badge {
+    position: absolute;
+    top: -10px;
+    right: -8px;
+    background: #10b981;
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 100px;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  /* ── TIERS GRID ── */
+  .tiers {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+
+  @media (max-width: 900px) {
+    .tiers {
+      grid-template-columns: 1fr;
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  /* ── TIER CARD ── */
+  .tier {
+    background: var(--surface);
+    border-radius: 20px;
+    padding: 36px 30px;
+    position: relative;
+    border: 2px solid #e5e7eb;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    opacity: 0;
+    animation: fade-up 0.6s ease forwards;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tier:nth-child(1) { animation-delay: 0.35s; }
+  .tier:nth-child(2) { animation-delay: 0.45s; }
+  .tier:nth-child(3) { animation-delay: 0.55s; }
+
+  .tier:hover {
+    transform: scale(1.04);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+    z-index: 2;
+  }
+
+  .tier.pro {
+    border: 2px solid var(--blue);
+    box-shadow: 0 8px 32px rgba(59, 111, 181, 0.15);
+  }
+
+  .tier.pro:hover {
+    transform: scale(1.04);
+    box-shadow: 0 20px 56px rgba(59, 111, 181, 0.22);
+    z-index: 2;
+  }
+
+  .tier.pro::before {
+    content: 'RECOMMENDED';
+    position: absolute;
+    top: -13px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--blue), #5b8fd4);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding: 5px 18px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(59, 111, 181, 0.3);
+  }
+
+  .tier-name {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .tier-tagline {
+    font-size: 13px;
+    color: var(--light-muted);
+    margin-bottom: 24px;
+  }
+
+  .price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin-bottom: 4px;
+  }
+
+  .price {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 44px;
+    font-weight: 800;
+    color: var(--navy);
+    transition: all 0.35s ease;
+  }
+
+  .price-period {
+    font-size: 15px;
+    color: var(--light-muted);
+    font-weight: 500;
+  }
+
+  .price-note {
+    font-size: 12px;
+    color: var(--blue);
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  .limit-badge {
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  .badge-limited {
+    background: var(--amber-bg);
+    color: var(--amber);
+  }
+
+  .badge-unlimited {
+    background: var(--blue-check-bg);
+    color: #1e40af;
+  }
+
+  .divider {
+    height: 1px;
+    background: #f0f2f5;
+    margin-bottom: 20px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--light-muted);
+    margin-bottom: 14px;
+  }
+
+  .features {
+    list-style: none;
+    margin-bottom: 28px;
+  }
+
+  .features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 7px 6px;
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.45;
+    border-radius: 8px;
+    transition: transform 0.25s ease, background 0.25s ease;
+    transform-origin: left center;
+  }
+
+  .features li:hover {
+    transform: scale(1.03);
+  }
+
+  .features li .icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    margin-top: 1px;
+  }
+
+  .check { background: var(--green-bg); color: var(--green); }
+  .pro-check { background: var(--blue-check-bg); color: var(--blue-check); }
+  .biz-check { background: #F3E8FF; color: #7C3AED; }
+
+  .tier:nth-child(3) { animation-delay: 0.55s; }
+
+  .tier.business {
+    border: 2px solid #E5E7EB;
+    position: relative;
+    padding: 40px 30px 40px;
+  }
+
+  .tier.business:hover {
+    box-shadow: 0 16px 48px rgba(124, 58, 237, 0.12);
+  }
+
+  .tier.business::before {
+    content: 'COMING SOON';
+    position: absolute;
+    top: -13px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #7C3AED, #A78BFA);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding: 5px 18px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);
+    z-index: 10;
+  }
+
+  .catchphrase {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+
+  .catchphrase-sub {
+    font-size: 12px;
+    color: #7C3AED;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  .features-zone {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    flex: 1;
+  }
+
+  .features-blurred {
+    filter: blur(3.5px);
+    opacity: 0.5;
+    pointer-events: none;
+    user-select: none;
+    position: absolute;
+    inset: 0;
+    padding: 8px;
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  }
+
+  .frost-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    z-index: 5;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0.35) 100%);
+    backdrop-filter: blur(1px);
+  }
+
+  .lock-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #7C3AED, #A78BFA);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(124, 58, 237, 0.3);
+    animation: pulse-lock 2.5s ease-in-out infinite;
+  }
+
+  .lock-icon svg {
+    width: 24px;
+    height: 24px;
+    color: white;
+  }
+
+  @keyframes pulse-lock {
+    0%, 100% { transform: scale(1); box-shadow: 0 8px 24px rgba(124, 58, 237, 0.3); }
+    50% { transform: scale(1.06); box-shadow: 0 12px 32px rgba(124, 58, 237, 0.4); }
+  }
+
+  .frost-text {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #7C3AED;
+  }
+
+  .frost-sub {
+    font-size: 13px;
+    color: var(--muted);
+    text-align: center;
+    max-width: 220px;
+  }
+
+  .cta-notify {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    background: linear-gradient(135deg, #7C3AED, #A78BFA);
+    color: white;
+    box-shadow: 0 4px 16px rgba(124, 58, 237, 0.3);
+    transition: all 0.3s ease;
+    margin-top: 4px;
+  }
+
+  .cta-notify:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(124, 58, 237, 0.4);
+  }
+
+  .features li .text .tag-biz {
+    font-size: 10px;
+    font-weight: 700;
+    color: #7C3AED;
+    background: #F3E8FF;
+    padding: 2px 7px;
+    border-radius: 4px;
+    margin-left: 6px;
+    letter-spacing: 0.3px;
+  }
+
+  .badge-fleet {
+    background: #F3E8FF;
+    color: #7C3AED;
+  }
+
+  .features li .text { flex: 1; }
+
+  .features li .text .tag {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--blue);
+    background: var(--blue-light);
+    padding: 2px 7px;
+    border-radius: 4px;
+    margin-left: 6px;
+    letter-spacing: 0.3px;
+  }
+
+  .features li .text .detail {
+    display: block;
+    font-size: 12px;
+    color: var(--light-muted);
+    margin-top: 2px;
+  }
+
+  /* ── CTA BUTTON ── */
+  .cta-btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+    margin-top: auto;
+  }
+
+  .cta-outline {
+    background: white;
+    color: var(--navy);
+    border: 2px solid #e5e7eb;
+  }
+
+  .cta-outline:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+    background: var(--blue-light);
+  }
+
+  .cta-primary {
+    background: linear-gradient(135deg, var(--blue), #5b8fd4);
+    color: white;
+    border: 2px solid transparent;
+    box-shadow: 0 4px 16px rgba(59, 111, 181, 0.3);
+  }
+
+  .cta-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 24px rgba(59, 111, 181, 0.4);
+  }
+
+  /* ── BOTTOM TRUST BAR ── */
+  .trust-bar {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 32px;
+    opacity: 0;
+    animation: fade-up 0.6s ease 0.6s forwards;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .trust-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+
+  .trust-icon svg {
+    width: 16px;
+    height: 16px;
+    color: var(--blue);
+  }
+
+  /* ── FAQ TEASER ── */
+  .faq-teaser {
+    text-align: center;
+    margin-top: 56px;
+    padding-top: 48px;
+    border-top: 1px solid #e5e7eb;
+    opacity: 0;
+    animation: fade-up 0.6s ease 0.7s forwards;
+  }
+
+  .faq-teaser p {
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
+  .faq-teaser a {
+    color: var(--blue);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .faq-teaser a:hover {
+    border-bottom-color: var(--blue);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px) scale(1);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .price-original {
+    display: none;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--light-muted);
+    text-decoration: line-through;
+    margin-right: 6px;
+  }
+
+  body.annual .price-original { display: inline; }
+
+  /* ── ANNUAL PRICING STATE ── */
+  .price-annual { display: none; }
+  body.annual .price-monthly { display: none; }
+  body.annual .price-annual { display: inline; }
+</style>
+</head>
+<body>
+
+<div class="bg-glow"></div>
+<div class="bg-grid"></div>
+
+<section class="pricing-section">
+
+  <!-- HEADER -->
+  <div class="pricing-header">
+    <div class="pricing-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      Pricing
+    </div>
+    <h1>Your new co-pilot on the road.<br><span class="accent">Choose your plan</span></h1>
+    <p class="pricing-subtitle">Try free for 14 days, then pick the plan that fits your business.</p>
+
+    <!-- BILLING TOGGLE -->
+    <div class="billing-toggle">
+      <div class="billing-option active" data-plan="monthly" onclick="switchPlan('monthly')">Monthly</div>
+      <div class="billing-option" data-plan="annual" onclick="switchPlan('annual')">
+        Annual
+        <span class="save-badge">−17%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIER CARDS -->
+  <div class="tiers">
+
+    <!-- ESSENTIEL -->
+    <div class="tier">
+      <div class="tier-name">Essentiel</div>
+      <div class="tier-tagline">Organize your business</div>
+      <div class="price-row">
+        <span class="price-original">9,99€</span>
+        <span class="price price-monthly">9,99€</span>
+        <span class="price price-annual">8,29€</span>
+        <span class="price-period">/mo</span>
+      </div>
+      <div class="price-note">14-day free trial</div>
+
+      <div class="limit-badge badge-limited">5 ride orders / month</div>
+
+      <div class="divider"></div>
+      <div class="section-label">Included</div>
+      <ul class="features">
+        <li><span class="icon check">✓</span><span class="text">Ride orders with automatic invoicing</span></li>
+        <li><span class="icon check">✓</span><span class="text">Quotes & invoices</span></li>
+        <li><span class="icon check">✓</span><span class="text">Price simulator<span class="detail">Real routing, distance, tolls, fuel — 15 simulations / month</span></span></li>
+        <li><span class="icon check">✓</span><span class="text">Real-time flight tracking</span></li>
+        <li><span class="icon check">✓</span><span class="text">1-tap shortcuts (GPS, call, SMS, WhatsApp, email)</span></li>
+        <li><span class="icon check">✓</span><span class="text">Welcome Board</span></li>
+        <li><span class="icon check">✓</span><span class="text">Client profiles with full history</span></li>
+        <li><span class="icon check">✓</span><span class="text">Ride history</span></li>
+        <li><span class="icon check">✓</span><span class="text">Automatic ride reminders</span></li>
+        <li><span class="icon check">✓</span><span class="text">Multilingual email notifications</span></li>
+        <li><span class="icon check">✓</span><span class="text">Performance tracking</span></li>
+        <li><span class="icon check">✓</span><span class="text">1 vehicle · 1 driver</span></li>
+      </ul>
+
+      <a href="#" class="cta-btn cta-outline">Start free trial</a>
+    </div>
+
+    <!-- PRO -->
+    <div class="tier pro">
+      <div class="tier-name">Pro</div>
+      <div class="tier-tagline">Grow your business</div>
+      <div class="price-row">
+        <span class="price-original">14,99€</span>
+        <span class="price price-monthly">14,99€</span>
+        <span class="price price-annual">12,49€</span>
+        <span class="price-period">/mo</span>
+      </div>
+      <div class="price-note">14-day free trial</div>
+
+      <div class="limit-badge badge-unlimited">Unlimited ride orders ∞</div>
+
+      <div class="divider"></div>
+      <div class="section-label">Everything in Essentiel, plus</div>
+      <ul class="features">
+        <li><span class="icon pro-check">✓</span><span class="text"><strong>Unlimited</strong> ride orders <span class="tag">PRO</span></span></li>
+        <li><span class="icon pro-check">✓</span><span class="text"><strong>Unlimited</strong> price simulator <span class="tag">PRO</span></span></li>
+        <li><span class="icon pro-check">✓</span><span class="text">Project invoicing (group multiple rides) <span class="tag">PRO</span></span></li>
+        <li><span class="icon pro-check">✓</span><span class="text">CSV accounting export <span class="tag">PRO</span></span></li>
+        <li><span class="icon pro-check">✓</span><span class="text">2 vehicles · 2 drivers <span class="tag">PRO</span></span></li>
+      </ul>
+
+      <div class="divider"></div>
+      <div class="section-label">+ Everything in Essentiel</div>
+      <ul class="features">
+        <li><span class="icon check">✓</span><span class="text">Quotes & invoices — unlimited</span></li>
+        <li><span class="icon check">✓</span><span class="text">Real-time flight tracking</span></li>
+        <li><span class="icon check">✓</span><span class="text">1-tap shortcuts</span></li>
+        <li><span class="icon check">✓</span><span class="text">Welcome Board</span></li>
+        <li><span class="icon check">✓</span><span class="text">Client profiles & history</span></li>
+        <li><span class="icon check">✓</span><span class="text">Reminders & multilingual notifications</span></li>
+        <li><span class="icon check">✓</span><span class="text">Performance tracking</span></li>
+      </ul>
+
+      <a href="#" class="cta-btn cta-primary">Start free trial</a>
+    </div>
+
+    <!-- BUSINESS -->
+    <div class="tier business">
+      <div class="tier-name">Business</div>
+      <div class="tier-tagline">Dominate your market</div>
+
+      <div class="catchphrase">Something big<br>is coming.</div>
+      <div class="catchphrase-sub">Stay tuned ✨</div>
+
+      <div class="features-zone">
+        <div class="features-blurred">
+          <div class="limit-badge badge-fleet">Unlimited vehicles & drivers ∞</div>
+
+          <div class="divider"></div>
+          <div class="section-label">Everything in Pro, plus</div>
+          <ul class="features">
+            <li><span class="icon biz-check">✓</span><span class="text"><strong>Unlimited</strong> vehicles & drivers <span class="tag-biz">BUSINESS</span></span></li>
+            <li><span class="icon biz-check">✓</span><span class="text">Unified revenue dashboard <span class="tag-biz">BUSINESS</span><span class="detail">Private + Uber + Bolt revenue in one view</span></span></li>
+            <li><span class="icon biz-check">✓</span><span class="text">AI Assistant <span class="tag-biz">BUSINESS</span><span class="detail">Pricing help and smart suggestions</span></span></li>
+            <li><span class="icon biz-check">✓</span><span class="text">Local event alerts <span class="tag-biz">BUSINESS</span><span class="detail">Festivals, conventions, F1 Monaco… anticipate demand</span></span></li>
+            <li><span class="icon biz-check">✓</span><span class="text">Gas station radar <span class="tag-biz">BUSINESS</span><span class="detail">Real-time fuel prices nearby</span></span></li>
+          </ul>
+
+          <div class="divider"></div>
+          <div class="section-label">+ Everything in Pro</div>
+          <ul class="features">
+            <li><span class="icon pro-check">✓</span><span class="text">Unlimited ride orders & simulator</span></li>
+            <li><span class="icon pro-check">✓</span><span class="text">Project invoicing · CSV export</span></li>
+            <li><span class="icon pro-check">✓</span><span class="text">Real-time flight tracking</span></li>
+            <li><span class="icon check">✓</span><span class="text">Welcome Board · 1-tap shortcuts</span></li>
+            <li><span class="icon check">✓</span><span class="text">Client profiles & full history</span></li>
+            <li><span class="icon check">✓</span><span class="text">Reminders & multilingual notifications</span></li>
+            <li><span class="icon check">✓</span><span class="text">Performance tracking</span></li>
+          </ul>
+        </div>
+
+        <div class="frost-overlay">
+          <div class="lock-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <span class="frost-text">Under development</span>
+          <span class="frost-sub">Advanced features coming soon</span>
+          <a href="#" class="cta-notify">🔔 Notify me</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </div>
+      Secure payment
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      No commitment
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      Cancel in 1 click
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      Responsive support
+    </div>
+  </div>
+
+  <!-- FAQ TEASER -->
+  <div class="faq-teaser">
+    <p>Questions about pricing or features?</p>
+    <a href="#">Check our FAQ →</a>
+  </div>
+
+</section>
+
+<script>
+function switchPlan(plan) {
+  document.querySelectorAll('.billing-option').forEach(el => {
+    el.classList.toggle('active', el.dataset.plan === plan);
+  });
+  document.body.classList.toggle('annual', plan === 'annual');
+  
+  document.querySelectorAll('.price').forEach(el => {
+    el.style.transform = 'scale(0.9)';
+    el.style.opacity = '0.5';
+    setTimeout(() => {
+      el.style.transform = 'scale(1)';
+      el.style.opacity = '1';
+    }, 150);
+  });
+}
+
+// Clear animation after it plays so hover transforms work
+document.querySelectorAll('.tier').forEach(card => {
+  card.addEventListener('animationend', () => {
+    card.style.opacity = '1';
+    card.style.animation = 'none';
+  });
+});
+</script>
+
+</body>
+</html>
