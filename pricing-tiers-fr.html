@@ -689,6 +689,162 @@
   .price-annual { display: none; }
   body.annual .price-monthly { display: none; }
   body.annual .price-annual { display: inline; }
+
+  /* ── NOTIFY MODAL ── */
+  .notify-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(10, 10, 30, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+  .notify-modal.modal-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .notify-modal-box {
+    background: linear-gradient(165deg, #ffffff 0%, #f8f7ff 100%);
+    border-radius: 24px;
+    padding: 44px 36px 36px;
+    max-width: 420px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    box-shadow:
+      0 0 0 1px rgba(124, 58, 237, 0.08),
+      0 24px 80px rgba(124, 58, 237, 0.12),
+      0 8px 24px rgba(0, 0, 0, 0.08);
+    transform: translateY(24px) scale(0.96);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .modal-open .notify-modal-box {
+    transform: translateY(0) scale(1);
+  }
+  .modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    background: #f3f4f6;
+    border: none;
+    border-radius: 50%;
+    font-size: 18px;
+    color: #6b7280;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+  .modal-close:hover {
+    background: #e5e7eb;
+    color: #1a1a2e;
+  }
+  .modal-icon-wrap {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 20px;
+    background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: modal-bell-in 0.5s ease 0.2s both;
+  }
+  .modal-icon-wrap svg {
+    width: 28px;
+    height: 28px;
+    color: #7C3AED;
+  }
+  @keyframes modal-bell-in {
+    0% { transform: scale(0.5) rotate(-10deg); opacity: 0; }
+    60% { transform: scale(1.08) rotate(4deg); }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+  }
+  .notify-modal-box h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #1a1a2e;
+    margin-bottom: 8px;
+  }
+  .notify-modal-box p {
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 28px;
+    line-height: 1.6;
+  }
+  .notify-form {
+    display: flex;
+    gap: 10px;
+  }
+  .notify-form input[type="email"] {
+    flex: 1;
+    padding: 13px 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.25s, box-shadow 0.25s;
+    background: white;
+  }
+  .notify-form input[type="email"]:focus {
+    border-color: #7C3AED;
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+  }
+  .notify-form button {
+    padding: 13px 22px;
+    background: linear-gradient(135deg, #7C3AED, #9333EA);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.25);
+  }
+  .notify-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(124, 58, 237, 0.35);
+  }
+  .notify-form button:active {
+    transform: translateY(0);
+  }
+  .notify-success {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #059669;
+    padding: 8px 0;
+    animation: success-in 0.4s ease;
+  }
+  @keyframes success-in {
+    0% { opacity: 0; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  @media (max-width: 480px) {
+    .notify-form {
+      flex-direction: column;
+    }
+    .notify-modal-box {
+      padding: 36px 24px 28px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -836,7 +992,7 @@
           </div>
           <span class="frost-text">En cours de développement</span>
           <span class="frost-sub">Des fonctionnalités avancées arrivent bientôt</span>
-          <a href="#" class="cta-notify">🔔 Prévenez-moi</a>
+          <a href="#" class="cta-notify" onclick="event.preventDefault();document.getElementById('notifyModal').classList.add('modal-open')">🔔 Prévenez-moi</a>
         </div>
       </div>
     </div>
@@ -902,6 +1058,40 @@ document.querySelectorAll('.tier').forEach(card => {
     card.style.opacity = '1';
     card.style.animation = 'none';
   });
+});
+</script>
+
+<div id="notifyModal" class="notify-modal" onclick="if(event.target===this)this.classList.remove('modal-open')">
+  <div class="notify-modal-box">
+    <button class="modal-close" onclick="this.closest('.notify-modal').classList.remove('modal-open')">&times;</button>
+    <div class="modal-icon-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+    </div>
+    <h3>Restez informé</h3>
+    <p>Recevez un email dès le lancement du forfait Business.</p>
+    <form action="https://formspree.io/f/xaqdgbkz" method="POST" class="notify-form" id="notifyForm">
+      <input type="hidden" name="_subject" value="PickUp Go — Business Tier Notify (FR)">
+      <input type="email" name="email" placeholder="Votre adresse email" required>
+      <button type="submit">Prévenez-moi</button>
+    </form>
+    <div class="notify-success" id="notifySuccess" style="display:none">
+      <span>✅</span> C'est noté ! On vous prévient dès que c'est prêt.
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById('notifyForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const form = e.target;
+  try {
+    await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+    form.style.display = 'none';
+    document.getElementById('notifySuccess').style.display = 'flex';
+  } catch (err) {
+    form.style.display = 'none';
+    document.getElementById('notifySuccess').style.display = 'flex';
+  }
 });
 </script>
 
