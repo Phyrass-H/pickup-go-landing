@@ -824,36 +824,49 @@
   }
   .notify-success {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    font-size: 15px;
-    font-weight: 600;
-    color: #059669;
-    padding: 8px 0;
+    text-align: center;
     animation: success-in 0.4s ease;
   }
-  .notify-success .success-text {
-    text-align: left;
-  }
-  .success-icon {
-    width: 32px;
-    height: 32px;
-    min-width: 32px;
-    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  .success-icon-large {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #d1fae5 0%, #6ee7b7 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0 auto 24px;
+    animation: success-pop 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
   }
-  .success-icon svg {
-    width: 18px;
-    height: 18px;
+  .success-icon-large svg {
+    width: 36px;
+    height: 36px;
     color: #059669;
   }
+  .success-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #1a1a2e;
+    margin-bottom: 10px;
+  }
+  .success-subtitle {
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.6;
+    max-width: 280px;
+  }
+  @keyframes success-pop {
+    0% { transform: scale(0.4); opacity: 0; }
+    60% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+  }
   @keyframes success-in {
-    0% { opacity: 0; transform: scale(0.9); }
-    100% { opacity: 1; transform: scale(1); }
+    0% { opacity: 0; transform: translateY(8px); }
+    100% { opacity: 1; transform: translateY(0); }
   }
   @media (max-width: 480px) {
     .notify-form {
@@ -1082,18 +1095,24 @@ document.querySelectorAll('.tier').forEach(card => {
 <div id="notifyModal" class="notify-modal" onclick="if(event.target===this)this.classList.remove('modal-open')">
   <div class="notify-modal-box">
     <button class="modal-close" onclick="this.closest('.notify-modal').classList.remove('modal-open')">&times;</button>
-    <div class="modal-icon-wrap">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+    <div class="modal-form-content">
+      <div class="modal-icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+      </div>
+      <h3>Restez informé</h3>
+      <p>Recevez un email dès le lancement du forfait Business.</p>
+      <form action="https://formspree.io/f/xaqdgbkz" method="POST" class="notify-form" id="notifyForm">
+        <input type="hidden" name="_subject" value="PickUp Go — Business Tier Notify (FR)">
+        <input type="email" name="email" placeholder="Votre adresse email" required>
+        <button type="submit">Prévenez-moi</button>
+      </form>
     </div>
-    <h3>Restez informé</h3>
-    <p>Recevez un email dès le lancement du forfait Business.</p>
-    <form action="https://formspree.io/f/xaqdgbkz" method="POST" class="notify-form" id="notifyForm">
-      <input type="hidden" name="_subject" value="PickUp Go — Business Tier Notify (FR)">
-      <input type="email" name="email" placeholder="Votre adresse email" required>
-      <button type="submit">Prévenez-moi</button>
-    </form>
     <div class="notify-success" id="notifySuccess" style="display:none">
-      <span class="success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="success-text">C'est noté ! On vous prévient dès que c'est prêt.</span>
+      <div class="success-icon-large">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+      </div>
+      <p class="success-title">C'est noté !</p>
+      <p class="success-subtitle">On vous prévient dès que le forfait Business est prêt.</p>
     </div>
   </div>
 </div>
@@ -1104,10 +1123,10 @@ document.getElementById('notifyForm').addEventListener('submit', async function(
   const form = e.target;
   try {
     await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
-    form.style.display = 'none';
+    document.querySelector('.modal-form-content').style.display = 'none';
     document.getElementById('notifySuccess').style.display = 'flex';
   } catch (err) {
-    form.style.display = 'none';
+    document.querySelector('.modal-form-content').style.display = 'none';
     document.getElementById('notifySuccess').style.display = 'flex';
   }
 });
