@@ -389,6 +389,9 @@
     position: relative;
     padding: 40px 30px 40px;
   }
+  .tier.business .features-zone {
+    min-height: 260px;
+  }
 
   .tier.business:hover {
     box-shadow: 0 16px 48px rgba(124, 58, 237, 0.12);
@@ -869,6 +872,12 @@
     100% { opacity: 1; transform: translateY(0); }
   }
   @media (max-width: 480px) {
+    .tier.business .features-zone {
+      min-height: 240px;
+    }
+    .frost-overlay {
+      gap: 8px;
+    }
     .notify-form {
       flex-direction: column;
     }
