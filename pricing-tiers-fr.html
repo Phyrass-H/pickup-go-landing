@@ -527,6 +527,20 @@
     box-shadow: 0 6px 24px rgba(124, 58, 237, 0.4);
   }
 
+  @keyframes bell-ring {
+    0%,  18%, 100% { transform: rotate(0deg); }
+    2%             { transform: rotate(22deg); }
+    6%             { transform: rotate(-20deg); }
+    10%            { transform: rotate(16deg); }
+    14%            { transform: rotate(-10deg); }
+    17%            { transform: rotate(5deg); }
+  }
+  .bell-ring-svg {
+    transform-origin: 50% 0%;
+    animation: bell-ring 3.2s ease-in-out infinite;
+    display: block;
+  }
+
   .features li .text .tag-biz {
     font-size: 10px;
     font-weight: 700;
@@ -1033,7 +1047,7 @@
           </div>
           <span class="frost-text">En cours de développement</span>
           <span class="frost-sub">Des fonctionnalités avancées arrivent bientôt</span>
-          <a href="#" class="cta-notify" onclick="event.preventDefault();document.getElementById('notifyModal').classList.add('modal-open')"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg> Prévenez-moi</a>
+          <a href="#" class="cta-notify" onclick="event.preventDefault();document.getElementById('notifyModal').classList.add('modal-open')"><svg class="bell-ring-svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg> Prévenez-moi</a>
         </div>
       </div>
     </div>
