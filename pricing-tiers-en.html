@@ -215,6 +215,9 @@
       margin-left: auto;
       margin-right: auto;
     }
+    .tier.business .features-zone {
+      max-height: 715px;
+    }
   }
 
   /* ── TIER CARD ── */
@@ -389,10 +392,6 @@
     position: relative;
     padding: 40px 30px 40px;
   }
-  .tier.business .features-zone {
-    min-height: 260px;
-  }
-
   .tier.business:hover {
     box-shadow: 0 16px 48px rgba(124, 58, 237, 0.12);
   }
@@ -442,11 +441,16 @@
     opacity: 0.5;
     pointer-events: none;
     user-select: none;
-    position: absolute;
-    inset: 0;
     padding: 8px;
     -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
     mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  }
+
+  @media (min-width: 901px) {
+    .features-blurred {
+      position: absolute;
+      inset: 0;
+    }
   }
 
   .frost-overlay {
@@ -872,9 +876,6 @@
     100% { opacity: 1; transform: translateY(0); }
   }
   @media (max-width: 480px) {
-    .tier.business .features-zone {
-      min-height: 240px;
-    }
     .frost-overlay {
       gap: 8px;
     }
