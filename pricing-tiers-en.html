@@ -833,6 +833,9 @@
     padding: 8px 0;
     animation: success-in 0.4s ease;
   }
+  .notify-success .success-text {
+    text-align: left;
+  }
   .success-icon {
     width: 32px;
     height: 32px;
@@ -1090,7 +1093,7 @@ document.querySelectorAll('.tier').forEach(card => {
       <button type="submit">Notify me</button>
     </form>
     <div class="notify-success" id="notifySuccess" style="display:none">
-      <span class="success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span> You're in! We'll let you know when it's ready.
+      <span class="success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span class="success-text">You're in! We'll let you know when it's ready.</span>
     </div>
   </div>
 </div>
