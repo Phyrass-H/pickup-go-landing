@@ -19,6 +19,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            overflow-x: hidden;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
@@ -1590,32 +1594,13 @@
         @media (max-width: 768px) {
             .language-switcher {
                 top: 15px;
-                right: 0;
-                padding-right: 15px;
+                right: 15px;
                 gap: 8px;
-                max-width: 100vw;
-                box-sizing: border-box;
             }
 
             .language-switcher a {
                 padding: 6px 12px;
                 font-size: 0.85rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .language-switcher {
-                top: 12px;
-                right: 0;
-                padding-right: 10px;
-                gap: 5px;
-                max-width: 100vw;
-                box-sizing: border-box;
-            }
-
-            .language-switcher a {
-                padding: 5px 9px;
-                font-size: 0.75rem;
             }
         }
     </style>
