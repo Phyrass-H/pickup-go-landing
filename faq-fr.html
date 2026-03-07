@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PickUp Go — FAQ</title>
+<link rel="canonical" href="https://pickupgo.cloud/faq-fr.html" />
+<meta name="description" content="Suivi de vol, simulateur de prix, panneau d'accueil, factures, gestion clients, raccourcis GPS — tout pour gérer votre activité en un seul endroit.">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#3B6FB5">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #3B6FB5;
+    --blue-dark: #2C5A96;
+    --blue-light: #EBF2FA;
+    --blue-subtle: #f0f5fb;
+    --navy: #1a1a2e;
+    --text: #374151;
+    --muted: #6b7280;
+    --light-muted: #9ca3af;
+    --surface: #ffffff;
+    --bg: #f9fafb;
+    --border: #e5e7eb;
+    --radius: 14px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HEADER ── */
+  .faq-hero {
+    text-align: center;
+    padding: 80px 24px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .faq-hero::before {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    top: -300px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: radial-gradient(circle, rgba(59, 111, 181, 0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .faq-hero .label {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--blue);
+    background: var(--blue-light);
+    display: inline-block;
+    padding: 6px 18px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fade-up 0.6s ease forwards;
+  }
+
+  .faq-hero h1 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 14px;
+    opacity: 0;
+    animation: fade-up 0.6s ease 0.1s forwards;
+  }
+
+  .faq-hero p {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 480px;
+    margin: 0 auto;
+    opacity: 0;
+    animation: fade-up 0.6s ease 0.2s forwards;
+  }
+
+  /* ── CATEGORY NAV ── */
+  .category-nav {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 0 24px 48px;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0;
+    animation: fade-up 0.6s ease 0.3s forwards;
+  }
+
+  .category-nav button {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 100px;
+    border: 1.5px solid var(--border);
+    background: var(--surface);
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+  }
+
+  .category-nav button:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+  }
+
+  .category-nav button.active {
+    background: var(--blue);
+    color: white;
+    border-color: var(--blue);
+    box-shadow: 0 2px 12px rgba(59, 111, 181, 0.25);
+  }
+
+  /* ── MAIN CONTAINER ── */
+  .faq-container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px 100px;
+  }
+
+  /* ── CATEGORY SECTION ── */
+  .faq-category {
+    margin-bottom: 48px;
+  }
+
+  .faq-category.hidden {
+    display: none;
+  }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1.5px solid var(--border);
+  }
+
+  .category-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .cat-general .category-icon { background: var(--blue-light); }
+  .cat-pricing .category-icon { background: #fef3c7; perspective: 200px; }
+  .cat-features .category-icon { background: #d1fae5; }
+  .cat-getting-started .category-icon { background: #ede9fe; }
+  .cat-security .category-icon { background: #fee2e2; }
+  .cat-support .category-icon { background: #e0e7ff; }
+
+  .category-icon svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .cat-general .category-icon svg { stroke: var(--blue); }
+  .cat-pricing .category-icon svg { stroke: #b45309; }
+  .cat-features .category-icon svg { stroke: #059669; }
+  .cat-getting-started .category-icon svg { stroke: #7c3aed; }
+  .cat-security .category-icon svg { stroke: #dc2626; }
+  .cat-support .category-icon svg { stroke: #4f46e5; }
+
+  .cat-support .category-icon svg circle,
+  .cat-support .category-icon svg path[d*="h.01"],
+  .cat-security .category-icon svg circle {
+    fill: currentColor;
+    stroke: none;
+  }
+
+  .cat-support .category-icon svg path[d*="h.01"] {
+    stroke: currentColor;
+    stroke-width: 3;
+  }
+
+  .cat-security .category-icon svg circle {
+    fill: none;
+    stroke: #dc2626;
+  }
+
+  /* ── SVG ANIMATIONS ── */
+
+  /* Lightbulb — glows on and off like an idea appearing */
+  @keyframes lightbulb-idea {
+    0%, 100% { filter: drop-shadow(0 0 0px transparent); transform: scale(1); }
+    15% { filter: drop-shadow(0 0 6px rgba(59, 111, 181, 0.5)); transform: scale(1.12); }
+    30% { filter: drop-shadow(0 0 2px rgba(59, 111, 181, 0.2)); transform: scale(1.04); }
+    45% { filter: drop-shadow(0 0 8px rgba(59, 111, 181, 0.6)); transform: scale(1.15); }
+    60% { filter: drop-shadow(0 0 3px rgba(59, 111, 181, 0.15)); transform: scale(1); }
+  }
+
+  /* Dollar — flips like a spinning coin */
+  @keyframes coin-flip {
+    0%, 100% { transform: rotateY(0deg); }
+    25% { transform: rotateY(180deg); }
+    50% { transform: rotateY(360deg); }
+    75% { transform: rotateY(360deg); }
+  }
+
+  /* Lightning — quick strike flash then settle */
+  @keyframes lightning-strike {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
+    8% { transform: translateY(-6px) scale(1.2); opacity: 0.4; }
+    16% { transform: translateY(2px) scale(0.95); opacity: 1; }
+    24% { transform: translateY(-3px) scale(1.1); opacity: 0.6; }
+    32% { transform: translateY(0) scale(1); opacity: 1; }
+  }
+
+  /* Rocket — lifts off, floats, comes back down */
+  @keyframes rocket-liftoff {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    20% { transform: translateY(0) rotate(-5deg); }
+    40% { transform: translateY(-10px) rotate(-15deg); }
+    55% { transform: translateY(-12px) rotate(-15deg); }
+    80% { transform: translateY(-4px) rotate(-5deg); }
+  }
+
+  /* Lock — shakes like testing if locked, then settles secure */
+  @keyframes lock-check {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    10% { transform: rotate(-8deg) scale(1.05); }
+    20% { transform: rotate(8deg) scale(1.05); }
+    30% { transform: rotate(-6deg) scale(1.03); }
+    40% { transform: rotate(6deg) scale(1.03); }
+    50% { transform: rotate(0deg) scale(1.08); }
+    60% { transform: rotate(0deg) scale(1); }
+  }
+
+  /* Chat — typing dots effect via bounce sequence */
+  @keyframes chat-typing {
+    0%, 100% { transform: translateY(0); }
+    20% { transform: translateY(-5px) scale(1.05); }
+    30% { transform: translateY(1px); }
+    40% { transform: translateY(-5px) scale(1.05); }
+    50% { transform: translateY(1px); }
+    60% { transform: translateY(-5px) scale(1.05); }
+    70% { transform: translateY(0); }
+  }
+
+  .cat-general .category-icon svg {
+    animation: lightbulb-idea 4s ease-in-out infinite;
+  }
+
+  .cat-pricing .category-icon svg {
+    animation: coin-flip 5s ease-in-out infinite;
+  }
+
+  .cat-features .category-icon svg {
+    animation: lightning-strike 4s ease-in-out infinite;
+  }
+
+  .cat-getting-started .category-icon svg {
+    animation: rocket-liftoff 4.5s ease-in-out infinite;
+    transform-origin: center bottom;
+  }
+
+  .cat-security .category-icon svg {
+    animation: lock-check 4s ease-in-out infinite;
+  }
+
+  .cat-support .category-icon svg {
+    animation: chat-typing 3.5s ease-in-out infinite;
+  }
+
+  .category-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  .category-count {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--light-muted);
+    margin-left: auto;
+  }
+
+  /* ── FAQ ITEM ── */
+  .faq-item {
+    background: var(--surface);
+    border-radius: var(--radius);
+    margin-bottom: 10px;
+    border: 1.5px solid var(--border);
+    overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .faq-item:hover {
+    border-color: rgba(59, 111, 181, 0.25);
+  }
+
+  .faq-item.open {
+    border-color: rgba(59, 111, 181, 0.35);
+    box-shadow: 0 4px 20px rgba(59, 111, 181, 0.08);
+  }
+
+  .faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 22px;
+    cursor: pointer;
+    user-select: none;
+    gap: 16px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .faq-question:hover {
+    background: var(--blue-subtle);
+  }
+
+  .faq-question span {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.4;
+  }
+
+  .faq-item.open .faq-question span {
+    color: var(--blue);
+  }
+
+  .faq-chevron {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease;
+  }
+
+  .faq-item.open .faq-chevron {
+    transform: rotate(180deg);
+    background: var(--blue-light);
+  }
+
+  .faq-chevron svg {
+    width: 14px;
+    height: 14px;
+    stroke: var(--muted);
+    transition: stroke 0.3s ease;
+  }
+
+  .faq-item.open .faq-chevron svg {
+    stroke: var(--blue);
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .faq-answer-inner {
+    padding: 0 22px 20px;
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  .faq-answer-inner strong {
+    color: var(--navy);
+    font-weight: 600;
+  }
+
+  .faq-answer-inner a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(59, 111, 181, 0.3);
+    transition: border-color 0.2s ease;
+  }
+
+  .faq-answer-inner a:hover {
+    border-color: var(--blue);
+  }
+
+  .tier-mini {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 6px;
+    letter-spacing: 0.3px;
+  }
+
+  .tier-essentiel {
+    background: var(--blue-light);
+    color: var(--blue);
+  }
+
+  .tier-pro {
+    background: #fef3c7;
+    color: #92400e;
+  }
+
+  /* ── CONTACT CTA ── */
+  .faq-cta {
+    text-align: center;
+    padding: 56px 24px;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+  }
+
+  .faq-cta h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+
+  .faq-cta p {
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+    background: var(--blue);
+    padding: 13px 30px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 12px rgba(59, 111, 181, 0.25);
+  }
+
+  .cta-button:hover {
+    background: var(--blue-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(59, 111, 181, 0.35);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .faq-category {
+    opacity: 0;
+    animation: fade-up 0.5s ease forwards;
+  }
+
+  .faq-category:nth-child(1) { animation-delay: 0.1s; }
+  .faq-category:nth-child(2) { animation-delay: 0.15s; }
+  .faq-category:nth-child(3) { animation-delay: 0.2s; }
+  .faq-category:nth-child(4) { animation-delay: 0.25s; }
+  .faq-category:nth-child(5) { animation-delay: 0.3s; }
+  .faq-category:nth-child(6) { animation-delay: 0.35s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .faq-hero { padding: 60px 20px 40px; }
+    .faq-question { padding: 16px 18px; }
+    .faq-question span { font-size: 14px; }
+    .faq-answer-inner { padding: 0 18px 18px; font-size: 14px; }
+    .category-nav { gap: 6px; }
+    .category-nav button { font-size: 12px; padding: 7px 14px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="faq-hero">
+  <div class="label">Centre d'aide</div>
+  <h1>Questions fréquentes</h1>
+  <p>Tout ce que vous devez savoir sur PickUp Go avant de vous lancer.</p>
+</section>
+
+<!-- ═══════ CATEGORY NAV ═══════ -->
+<nav class="category-nav">
+  <button class="active" data-filter="all">Tout</button>
+  <button data-filter="general">Général</button>
+  <button data-filter="pricing">Tarifs</button>
+  <button data-filter="features">Fonctionnalités</button>
+  <button data-filter="getting-started">Premiers pas</button>
+  <button data-filter="security">Données</button>
+  <button data-filter="support">Support</button>
+</nav>
+
+<!-- ═══════ FAQ CONTENT ═══════ -->
+<div class="faq-container">
+
+  <!-- ── GÉNÉRAL ── -->
+  <div class="faq-category cat-general" data-category="general">
+    <div class="category-header">
+      <div class="category-icon"><svg viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.3A7 7 0 0 0 12 2z"/></svg></div>
+      <div class="category-title">Général</div>
+      <div class="category-count">5 questions</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Qu'est-ce que PickUp Go ?</span>
+        <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        PickUp Go est une application mobile de gestion professionnelle conçue pour les chauffeurs VTC, taxis et moto-taxis. Elle regroupe tous les outils dont un chauffeur a besoin au quotidien : bons de commande, facturation, suivi de vol, simulateur de prix, gestion clients et bien plus — le tout dans une seule app.
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>À qui s'adresse PickUp Go ?</span>
+        <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        À tous les professionnels du transport privé : VTC, taxis et moto-taxis. Que vous soyez en début d'activité ou établi depuis des années, l'app est pensée pour vous simplifier la vie et vous faire gagner du temps sur le terrain.
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Est-ce une plateforme de réservation comme Uber ?</span>
+        <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        Non. PickUp Go n'est <strong>pas</strong> une plateforme de mise en relation. C'est un outil de gestion pour votre activité. Vous gérez vos propres clients, vos commandes, vos factures. L'app vous aide à être plus organisé et professionnel — pas à trouver des clients à votre place.
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Qui a créé PickUp Go ?</span>
+        <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        PickUp Go est né de la frustration d'un chauffeur VTC sur la Côte d'Azur, fatigué de jongler entre des apps inadaptées. Créée par un chauffeur, pour les chauffeurs. L'objectif : regrouper tous les outils indispensables dans une seule app intuitive et performante. Chaque fonctionnalité répond à un vrai besoin du terrain.
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>PickUp Go est-il disponible dans mon pays ?</span>
+        <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        Le lancement officiel se fait en France, mais l'app est conçue pour être utilisée partout dans le monde. L'interface est disponible en français et en anglais, et l'expansion vers le Royaume-Uni puis le reste de l'Europe est prévue courant 2027.
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ── TARIFS & ABONNEMENT ── -->
+  <div class="faq-category cat-pricing" data-category="pricing">
+    <div class="category-header">
+      <div class="category-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+      <div class="category-title">Tarifs & Abonnement</div>
+      <div class="category-count">6 questions</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Combien coûte PickUp Go ?</span>
+        <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        PickUp Go propose deux forfaits : <span class="tier-mini tier-essentiel">Essentiel</span> à <strong>9,99 €/mois</strong> et <span class="tier-mini tier-pro">Pro</span> à <strong>14,99 €/mois</strong>. Les deux incluent un essai gratuit de 14 jours avec accès complet à toutes les fonctionnalités, sans engagement.
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Quelle est la différence entre Essentiel et Pro ?</span>
+        <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        <span class="tier-mini tier-essentiel">Essentiel</span> inclut 5 commandes par mois, les devis et factures, le suivi de vol, le Welcome Board, les raccourcis en 1 tap, le simulateur de prix intelligent, la gestion client et les notifications multilingues — tout ce qu'il faut pour bien démarrer.<br><br>
+        <span class="tier-mini tier-pro">Pro</span> débloque les commandes illimitées, le simulateur de prix en illimité, la facturation projet (regrouper plusieurs courses en une facture), l'export comptable CSV et jusqu'à 2 véhicules et 2 chauffeurs.
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Y a-t-il un essai gratuit ?</span>
+        <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        Oui. <strong>14 jours d'essai gratuit</strong>, avec un accès complet à toutes les fonctionnalités Pro. Vous créez votre compte, vous testez tout, et vous pouvez annuler à tout moment avant la fin de l'essai sans être débité.
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Puis-je changer de forfait à tout moment ?</span>
+        <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        Oui. Vous pouvez passer d'Essentiel à Pro ou inversement quand vous le souhaitez. Le passage à Pro est immédiat. Le passage à Essentiel prend effet à la fin de votre période de facturation en cours.
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Comment annuler mon abonnement ?</span>
+        <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        Sans engagement. Vous pouvez annuler votre abonnement à tout moment depuis les paramètres de l'app ou de votre compte. Aucun frais d'annulation.
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Quels moyens de paiement sont acceptés ?</span>
+        <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        Carte bancaire, Apple Pay, Google Pay et autres moyens de paiement courants. Les détails sont indiqués lors de la souscription dans l'app.
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ── FONCTIONNALITÉS ── -->
+  <div class="faq-category cat-features" data-category="features">
+    <div class="category-header">
+      <div class="category-icon"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+      <div class="category-title">Fonctionnalités</div>
+      <div class="category-count">7 questions</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Comment fonctionne le suivi de vol en temps réel ?</span>
+        <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        Entrez simplement le numéro de vol dans votre bon de commande. L'app suit le vol en direct et vous alerte automatiquement en cas de retard, d'avance ou de changement de statut. Vous pouvez suivre le vol directement depuis votre écran verrouillé. Plus besoin de vérifier manuellement sur FlightRadar ou autre.
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Qu'est-ce que le Welcome Board ?</span>
+        <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        C'est votre pancarte numérique. Depuis le bon de commande, appuyez sur un bouton dédié et le nom de votre passager s'affiche en plein écran sur votre téléphone. Idéal pour les accueils en aéroport ou en gare. Professionnel, instantané, zéro préparation.
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Comment fonctionne le simulateur de prix ?</span>
+        <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        Entrez deux adresses et le simulateur calcule automatiquement la distance, la durée, les péages et le coût carburant pour vous donner un prix précis selon votre grille tarifaire (Standard, Premium, Luxe). Disponible dans les deux forfaits.
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Puis-je envoyer des factures et devis depuis l'app ?</span>
+        <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        Oui. Vos factures et devis sont générés en PDF professionnel avec votre logo. Transformez un bon de commande en facture en un clic. À la fin d'une course, la facture est générée et envoyée automatiquement par email au client. Les documents s'adaptent à la langue de votre client.
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Mes clients reçoivent-ils des notifications automatiques ?</span>
+        <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        Oui. Dès que vous créez une commande, votre client reçoit un email de confirmation automatique avec tous les détails de la course. Les emails sont envoyés automatiquement dans la langue de votre client.
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Qu'est-ce que le mode Projet ?</span>
+        <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        Le mode Projet <span class="tier-mini tier-pro">Pro</span> vous permet de regrouper plusieurs courses d'un même client ou événement dans un dossier (ex : « Festival de Cannes », « Mariage Dupont »). À la clôture du projet, une seule facture est générée avec le détail de toutes les missions. Parfait pour les contrats B2B et les événements.
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>L'app est-elle disponible en plusieurs langues ?</span>
+        <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        Oui. L'interface de l'app est disponible en français et en anglais. Les documents (devis, factures) et les emails automatiques s'adaptent à la langue de chaque client. D'autres langues seront ajoutées progressivement.
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ── PREMIERS PAS ── -->
+  <div class="faq-category cat-getting-started" data-category="getting-started">
+    <div class="category-header">
+      <div class="category-icon"><svg viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div>
+      <div class="category-title">Premiers pas</div>
+      <div class="category-count">5 questions</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Comment créer mon compte ?</span>
+        <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        Téléchargez PickUp Go sur l'App Store ou Google Play, lancez l'app et suivez les étapes de création de compte. Renseignez vos informations professionnelles (nom, société, coordonnées) et vous êtes prêt à travailler en quelques minutes.
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Combien de temps faut-il pour configurer l'app ?</span>
+        <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        Quelques minutes suffisent. Créez votre compte, entrez vos tarifs, ajoutez votre logo et vous pouvez créer votre première commande immédiatement. L'app est pensée pour que vous soyez opérationnel le plus vite possible.
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Puis-je importer mes clients existants ?</span>
+        <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        Pour le moment, les clients sont ajoutés manuellement dans l'app. Bonne nouvelle : une fois qu'un client est enregistré, ses informations sont sauvegardées et pré-remplies automatiquement pour toutes les futures commandes.
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Sur quels appareils fonctionne PickUp Go ?</span>
+        <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        PickUp Go est disponible sur <strong>iPhone</strong> (iOS) et <strong>Android</strong>. L'app est optimisée pour les smartphones — c'est votre outil de terrain, toujours dans votre poche. Une version web est prévue dans le futur pour la gestion depuis un ordinateur.
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Faut-il une connexion Internet pour utiliser l'app ?</span>
+        <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        Oui, une connexion Internet est nécessaire pour synchroniser vos données, envoyer des emails automatiques et utiliser le suivi de vol ou le simulateur de prix. Vos données essentielles restent accessibles même en cas de connexion instable.
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ── DONNÉES & SÉCURITÉ ── -->
+  <div class="faq-category cat-security" data-category="security">
+    <div class="category-header">
+      <div class="category-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16.5" r="1"/></svg></div>
+      <div class="category-title">Données & Sécurité</div>
+      <div class="category-count">4 questions</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Mes données sont-elles sécurisées ?</span>
+        <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        Oui. Toutes les communications entre l'app et nos serveurs sont chiffrées (TLS/SSL). Vos mots de passe sont protégés par un algorithme de hachage sécurisé (BCrypt) et ne sont jamais stockés en clair. Des sauvegardes quotidiennes protègent vos données contre toute perte.
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Où sont stockées mes données ?</span>
+        <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        Vos données sont hébergées sur des serveurs sécurisés situés en <strong>France et en Allemagne</strong>, au sein de l'Union européenne. Aucun transfert de données hors de l'Espace Économique Européen. Votre data reste en Europe.
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Puis-je supprimer mon compte et mes données ?</span>
+        <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        Oui. Depuis Paramètres > Mon compte > Supprimer mon compte, vous pouvez demander la suppression de votre compte et de toutes vos données personnelles. La suppression est traitée conformément à notre politique de confidentialité et au RGPD.
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>PickUp Go est-il conforme au RGPD ?</span>
+        <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        Oui, totalement. PickUp Go est développé et opéré par SAS Cactus, basée en France. L'app est conforme au Règlement Général sur la Protection des Données (RGPD) et aux lois françaises en vigueur. Vous pouvez consulter notre politique de confidentialité complète depuis l'app ou notre site web.
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ── SUPPORT ── -->
+  <div class="faq-category cat-support" data-category="support">
+    <div class="category-header">
+      <div class="category-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h.01"/><path d="M12 10h.01"/><path d="M16 10h.01"/></svg></div>
+      <div class="category-title">Support</div>
+      <div class="category-count">3 questions</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Comment contacter le support ?</span>
+        <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        Envoyez-nous un email à <a href="mailto:support@pickupgo.cloud">support@pickupgo.cloud</a>. Nous répondons dans les meilleurs délais.
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>J'ai trouvé un bug, comment le signaler ?</span>
+        <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        Contactez-nous à <a href="mailto:support@pickupgo.cloud">support@pickupgo.cloud</a> en décrivant le problème, l'écran concerné et votre appareil. Si possible, envoyez une capture d'écran. Chaque retour nous aide à améliorer l'app pour tous les chauffeurs.
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Puis-je suggérer une nouvelle fonctionnalité ?</span>
+        <div class="faq-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+      </div>
+      <div class="faq-answer"><div class="faq-answer-inner">
+        Bien sûr, et on adore ça. Envoyez vos idées à <a href="mailto:support@pickupgo.cloud">support@pickupgo.cloud</a>. PickUp Go est construit par un chauffeur — les retours des pros du terrain sont la base de chaque amélioration. Vos suggestions comptent vraiment.
+      </div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════ CONTACT CTA ═══════ -->
+<section class="faq-cta">
+  <h2>Vous n'avez pas trouvé votre réponse ?</h2>
+  <p>Notre équipe est là pour vous aider.</p>
+  <a href="mailto:support@pickupgo.cloud" class="cta-button">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13L2 4"/></svg>
+    Contactez-nous
+  </a>
+</section>
+
+<script>
+  // ── Accordion toggle ──
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    const answer = item.querySelector('.faq-answer');
+    const isOpen = item.classList.contains('open');
+
+    // Close all others in same category
+    const category = item.closest('.faq-category');
+    category.querySelectorAll('.faq-item.open').forEach(openItem => {
+      if (openItem !== item) {
+        openItem.classList.remove('open');
+        openItem.querySelector('.faq-answer').style.maxHeight = '0';
+      }
+    });
+
+    if (isOpen) {
+      item.classList.remove('open');
+      answer.style.maxHeight = '0';
+    } else {
+      item.classList.add('open');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+  }
+
+  // ── Category filter ──
+  document.querySelectorAll('.category-nav button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.category-nav button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.faq-category').forEach(cat => {
+        if (filter === 'all' || cat.dataset.category === filter) {
+          cat.classList.remove('hidden');
+          cat.style.opacity = '0';
+          cat.style.animation = 'none';
+          requestAnimationFrame(() => {
+            cat.style.animation = '';
+            cat.style.opacity = '';
+          });
+        } else {
+          cat.classList.add('hidden');
+        }
+      });
+
+      // Close all open items
+      document.querySelectorAll('.faq-item.open').forEach(item => {
+        item.classList.remove('open');
+        item.querySelector('.faq-answer').style.maxHeight = '0';
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
