@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://pickupgo.cloud/" />
+    <link rel="alternate" hreflang="en" href="https://pickupgo.cloud/" />
+    <link rel="alternate" hreflang="fr" href="https://pickupgo.cloud/index-fr.html" />
+    <link rel="alternate" hreflang="x-default" href="https://pickupgo.cloud/" />
     <title>PickUp Go — The Smart App for Professional Drivers</title>
     <meta name="description" content="Flight tracking, price simulator, welcome board, invoicing, client management, GPS shortcuts — everything to manage your business in one place.">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -1709,6 +1712,12 @@
     <!-- Language Detection and Auto-Redirect Script -->
     <script>
         (function() {
+            // Skip redirect for search engine bots (let them crawl both pages)
+            var ua = navigator.userAgent.toLowerCase();
+            if (/googlebot|bingbot|yandex|baiduspider|duckduckbot|slurp|facebookexternalhit|twitterbot|linkedinbot|bot|crawl|spider/i.test(ua)) {
+                return;
+            }
+
             // Check if user has manually selected a language
             const userLanguageChoice = localStorage.getItem('userLanguageChoice');
 
